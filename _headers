@@ -1,0 +1,13 @@
+# Netlify / Cloudflare Pages — رؤوس الأمان والتخزين المؤقت.
+# الاستضافات التي لا تقرأ هذا الملف تتجاهله بلا ضرر.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+/site.css
+  Cache-Control: public, max-age=31536000, immutable
+/site.js
+  Cache-Control: public, max-age=31536000, immutable

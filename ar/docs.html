@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وثائق فكترة — شرح كل وحدة في النظام مع أمثلة محسوبة</title>
+<meta name="description" content="دليل تفصيلي لوحدات فكترة: الفوترة الإلكترونية بمعيار PINT AE، وضريبة القيمة المضافة، والمناطق الحرة المعيّنة، وهامش الربح، والمخزون، والرواتب — مع مثال رقمي لكل وحدة.">
+
+<link rel="canonical" href="https://faktra.ae/ar/docs.html">
+<link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/docs.html">
+<link rel="alternate" hreflang="en" href="https://faktra.ae/en/docs.html">
+<link rel="alternate" hreflang="x-default" href="https://faktra.ae/ar/docs.html">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:site_name" content="فكترة">
+<meta property="og:title" content="وثائق فكترة — شرح كل وحدة في النظام مع أمثلة محسوبة">
+<meta property="og:description" content="دليل تفصيلي لوحدات فكترة: الفوترة الإلكترونية بمعيار PINT AE، وضريبة القيمة المضافة، والمناطق الحرة المعيّنة، وهامش الربح، والمخزون، والرواتب — مع مثال رقمي لكل وحدة.">
+<meta property="og:url" content="https://faktra.ae/ar/docs.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "فكترة",
+   "item": "https://faktra.ae/ar/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "وثائق فكترة",
+   "item": "https://faktra.ae/ar/docs.html"
+  }
+ ]
+}
+</script>
+
+<link rel="stylesheet" href="../site.css">
+<style>
+  .doc { display: grid; grid-template-columns: 250px 1fr; gap: 52px;
+    align-items: start; padding: 44px 0 90px; }
+
+  .side { position: sticky; top: calc(var(--nav-h) + 24px); max-height: calc(100vh - 120px);
+    overflow-y: auto; padding-inline-end: 8px; }
+  .side h6 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin: 22px 0 8px; font-weight: 700; }
+  .side h6:first-child { margin-top: 0; }
+  .side a { display: block; padding: 7px 12px; border-radius: 8px; text-decoration: none;
+    font-size: 14px; color: var(--ink-2); border-inline-start: 2px solid transparent;
+    transition: background .15s, color .15s, border-color .15s; }
+  .side a:hover { background: var(--paper); color: var(--indigo); }
+  .side a.on { background: var(--indigo-wash); color: var(--indigo-deep); font-weight: 700;
+    border-inline-start-color: var(--indigo); }
+
+  .art > section { padding: 0 0 52px; scroll-margin-top: calc(var(--nav-h) + 24px); }
+  .art h2 { font-size: clamp(24px, 2.6vw, 31px); margin-top: 8px; }
+  .art h3 { font-size: 18px; margin-top: 28px; }
+  .art p { font-size: 15.5px; }
+  .art ul { padding-inline-start: 20px; }
+  .art li { font-size: 15.5px; color: var(--ink-2); margin-bottom: 7px; }
+
+  /* صندوق المثال — القلب بتاع الصفحة دي */
+  .ex { background: var(--paper); border: 1px solid var(--line);
+    border-inline-start: 3px solid var(--indigo); border-radius: 0 var(--r) var(--r) 0;
+    padding: 20px 22px; margin: 20px 0; }
+  html[dir="ltr"] .ex { border-radius: var(--r) 0 0 var(--r); }
+  .ex-h { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--indigo); font-weight: 800; margin-bottom: 12px; }
+  .ex table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 6px 0; }
+  .ex td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .ex tr:last-child td { border-bottom: 0; }
+  .ex td:last-child { text-align: end; font-family: var(--mono); direction: ltr;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ex .tot td { font-weight: 800; border-top: 2px solid var(--line-strong);
+    border-bottom: 0; padding-top: 10px; }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex .note { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+
+  .warn-box { background: var(--warn-wash); border: 1px solid #F3D9AE;
+    border-radius: var(--r); padding: 16px 18px; margin: 20px 0; font-size: 14.5px; }
+  .warn-box strong { color: var(--warn); }
+
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px;
+    font-size: 14.5px; margin: 16px 0; }
+  .kv dt { font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .kv dd { margin: 0; color: var(--ink-2); }
+
+  @media (max-width: 900px) {
+    .doc { grid-template-columns: 1fr; gap: 26px; padding-top: 26px; }
+    .side { position: static; max-height: none;
+      border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+    .side-in { display: flex; flex-wrap: wrap; gap: 5px; }
+    .side h6 { width: 100%; margin: 12px 0 4px; }
+    .side a { border-inline-start: 0; border: 1px solid var(--line); font-size: 13px;
+      padding: 6px 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="shell nav-in">
+    <a class="brand" href="./index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect fill="#4F46E5" x="13" y="11" width="9" height="42" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="11" width="38" height="9" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="27" width="26" height="9" rx="2.5"></rect>
+        <rect fill="#8B87F5" x="29" y="44" width="22" height="9" rx="2.5"></rect>
+      </svg>
+      فكترة
+    </a>
+    <div class="nav-links">
+      <a href="./index.html#modules">الوحدات</a>
+      <a href="./index.html#sectors">القطاعات</a>
+      <a href="./docs.html" class="on">الوثائق</a>
+      <a href="./pricing.html">الأسعار</a>
+    </div>
+    <div class="nav-act">
+      <a class="lang" href="../en/docs.html" hreflang="en" lang="en">EN</a>
+      <a class="btn btn-primary" href="./index.html#contact">
+        اطلب عرض</a>
+      <button class="burger" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="shell doc">
+
+  <!-- ══════════════ القائمة الجانبية ══════════════ -->
+  <aside class="side" data-doc-nav="">
+    <div class="side-in">
+      <h6>الأساسيات</h6>
+      <a href="#start">الدورة الكاملة</a>
+      <a href="#invoicing">الفوترة</a>
+      <a href="#einvoicing">الفوترة الإلكترونية</a>
+
+      <h6>الضرائب</h6>
+      <a href="#vat">ضريبة القيمة المضافة</a>
+      <a href="#zones">المناطق الحرة المعيّنة</a>
+      <a href="#margin">هامش الربح</a>
+      <a href="#excise">الضريبة الانتقائية</a>
+
+      <h6>المال</h6>
+      <a href="#accounting">المحاسبة</a>
+      <a href="#collections">التحصيل والشيكات</a>
+      <a href="#bank">البنك والعملات</a>
+
+      <h6>العمليات</h6>
+      <a href="#stock">المخزون</a>
+      <a href="#returns">المرتجعات</a>
+      <a href="#purchasing">المشتريات والشحن</a>
+      <a href="#manufacturing">التصنيع</a>
+      <a href="#pos">نقطة البيع</a>
+      <a href="#fleet">الأسطول والتوصيل</a>
+
+      <h6>الناس والمشاريع</h6>
+      <a href="#payroll">الرواتب وحماية الأجور</a>
+      <a href="#projects">المشاريع</a>
+      <a href="#sales">العملاء المحتملون والعمولات</a>
+      <a href="#compliance">انتهاء المستندات</a>
+
+      <h6>الثقة</h6>
+      <a href="#checks">فحوصات صحة الأرقام</a>
+      <a href="#security">الأمان والنسخ الاحتياطي</a>
+      <a href="#migration">الانتقال من نظام قديم</a>
+    </div>
+  </aside>
+
+  <!-- ══════════════ المحتوى ══════════════ -->
+  <main class="art">
+    <h1 style="font-size:clamp(26px,3vw,36px);margin-bottom:8px">وثائق فكترة</h1>
+
+    <section id="start">
+      <div class="eyebrow">ابدأ من هنا</div>
+      <h2>الدورة الكاملة في النظام</h2>
+      <p>كل شيء في فكترة بتدور حوالين دورة واحدة. لو فهمتها، فهمت
+        النظام كله — وباقي الوحدات كلها بتعلّق على النقاط هذه.
+        </p>
+
+      <ol style="font-size:15.5px;color:var(--ink-2);padding-inline-start:20px">
+        <li><strong>عميل وصنف.</strong>
+           بيانات العميل ورقمه الضريبي، والصنف بسعره وتصنيفه الضريبي.
+          </li>
+        <li><strong>عرض سعر.</strong>
+           اختياري — وبيتحوّل لفاتورة بضغطة من غير إعادة كتابة.
+          </li>
+        <li><strong>فاتورة مسودة.</strong>
+           تعدّل فيها مثل ما انت يريد. ما زال مالهاش رقم قانوني ومش في الدفاتر.
+          </li>
+        <li><strong>الإصدار.</strong>
+           هنا بيحصل كل شيء مرة واحدة: رقم قانوني متسلسل، قيد محاسبي،
+          خروج المخزون، تكلفة المبيعات، وXML للفوترة الإلكترونية. كله في معاملة واحدة —
+          يا يتم كله يا ما يحصلش شيء.
+          </li>
+        <li><strong>التحصيل.</strong>
+           دفعة أو شيك. الفاتورة بتتقفل والقيد بيتعمل.
+          </li>
+        <li><strong>التقارير.</strong>
+           إقرار الضريبة، أعمار الديون، الأرباح، المخزون — كلها بتتبني
+          من نفس البيانات ليس من جداول منفصلة.
+          </li>
+      </ol>
+
+      <div class="warn-box">
+        <strong>قاعدة مهمة:</strong>
+         الفاتورة بعد ما تتصدر ما بتتعدلش أبداً. التصحيح يكون بإشعار
+          دائن أو مدين — وده ليس تعقيد، هذا الذي بيخلي دفاترك تعدّي مراجعة الهيئة.
+        
+      </div>
+    </section>
+
+    <section id="invoicing">
+      <h2>الفوترة</h2>
+      <p>فاتورة ضريبية مطابقة لمتطلبات الإمارات، بالعربي والإنجليزي على
+        نفس الورقة، مع رمز QR. الترقيم متسلسل ومستحيل يحصل فيه فجوة أو تكرار.
+        </p>
+
+      <dl class="kv">
+        <dt>الأنواع</dt>
+        <dd>فاتورة، فاتورة مبسّطة، إشعار دائن، إشعار مدين، عرض سعر،
+          فاتورة متكررة، فاتورة دفعة مقدمة
+          </dd>
+        <dt>الخصومات</dt>
+        <dd>على السطر أو على الفاتورة، بنسبة أو بمبلغ
+          </dd>
+        <dt>العملات</dt>
+        <dd>أي عملة، والقيد بيتسجل بالدرهم بسعر يوم الفاتورة
+          </dd>
+      </dl>
+
+      <div class="ex">
+        <div class="ex-h">مثال — فاتورة بخصم
+          </div>
+        <table>
+          <tbody><tr><td>زيت زيتون ٥٠٠ مل × ٤٠ بسعر ٣٧٫٠٠
+            </td><td>1,480.00</td></tr>
+          <tr><td>خصم ٥٪ على السطر</td>
+            <td>−74.00</td></tr>
+          <tr><td>الصافي قبل الضريبة</td>
+            <td>1,406.00</td></tr>
+          <tr><td>ضريبة القيمة المضافة ٥٪</td>
+            <td>70.30</td></tr>
+          <tr class="tot"><td>الإجمالي المستحق</td>
+            <td>1,476.30</td></tr>
+        </tbody></table>
+        <p class="note">الضريبة بتتحسب على المجموعة كلها مرة واحدة ليس
+          على كل سطر وحده. الفرق فلس أو فلسان — وده بالظبط الذي بيخلي بوابة الهيئة
+          ترفض فاتورة ولا تقبلها.
+          </p>
+      </div>
+    </section>
+
+    <section id="einvoicing">
+      <h2>الفوترة الإلكترونية</h2>
+      <p>النظام بيولّد ملف XML بمعيار <span class="en">PINT AE</span>
+        لكل فاتورة، بيتحقق منه قبل الإرسال، وبيحتفظ بنسخة مؤرشفة منه. وفيه صندوق صادر
+        بيتابع حالة كل فاتورة ويعيد الإرسال لو فشلت.
+        </p>
+
+      <div class="warn-box">
+        <strong>ما ينبغي أن يكون واضحًا:</strong>
+         فكترة <u>ليس</u> مزوّد خدمة معتمد. الإرسال الرسمي للهيئة يمر عبر
+          مزوّد معتمد انت بتتعاقد معاه، والنظام بيتوصّل بيه. أي برنامج بيقول إنه بيرسل
+          رسمياً وحده — اطلب منه يوريك عقد الاعتماد.
+        
+      </div>
+
+      <h3>الذي بيتحقق منه قبل الإرسال</h3>
+      <ul>
+        <li>الرقم الضريبي للطرفين وصيغته
+          </li>
+        <li>تطابق مجاميع السطور مع إجمالي الفاتورة لحد الفلس
+          </li>
+        <li>تطابق مجموعات الضريبة مع النسب المعلنة
+          </li>
+        <li>وجود الفاتورة الأصلية عند إصدار إشعار دائن
+          </li>
+      </ul>
+    </section>
+
+    <section id="vat">
+      <h2>ضريبة القيمة المضافة</h2>
+      <p>الإقرار بيتبني من الفواتير نفسها ليس من جدول منفصل بيتحدّث يدوي —
+        فمستحيل يختلف عن الذي انت أصدرته فعلاً.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">خانات الإقرار</div>
+        <table>
+          <tbody><tr><td>١ — توريدات خاضعة للنسبة الأساسية
+            </td><td>248,510.00</td></tr>
+          <tr><td>٣ — خاضعة للاحتساب العكسي
+            </td><td>18,400.00</td></tr>
+          <tr><td>٤ — توريدات بنسبة صفر
+            </td><td>62,000.00</td></tr>
+          <tr><td>٥ — توريدات معفاة</td>
+            <td>0.00</td></tr>
+          <tr class="tot"><td>الضريبة المستحقة</td>
+            <td>12,425.50</td></tr>
+        </tbody></table>
+        <p class="note">وكل خانة تقدر تفتحها وتشوف الفواتير الذي كوّنتها —
+          ليس رقم مجرّد.
+          </p>
+      </div>
+    </section>
+
+    <section id="zones">
+      <h2>المناطق الحرة المعيّنة</h2>
+      <p>هذه أكتر قاعدة بيغلط فيها الناس في الإمارات، لأن الحدس بيقول
+        شيء والقانون بيقول شيء أخرى. النظام بيعرف الأربع قواعد وبيراجع كل فاتورة
+        عليها.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">القواعد الأربعة</div>
+        <ul style="margin:0;padding-inline-start:18px">
+          <li><strong>البيع لمنطقة حرة معيّنة ليس تصدير.</strong> شركة في
+            جبل علي شركة إماراتية — البيع ليها من البر الرئيسي خاضع للضريبة العادية.
+            </li>
+          <li><strong>القاعدة بتغطي البضاعة غير أن.</strong> الخدمات المقدَّمة
+            داخل منطقة حرة معيّنة خاضعة للضريبة مثل أي مكان آخر.
+            </li>
+          <li><strong>البضاعة الذي بتتحرك بين منطقتين معيّنتين</strong>
+            ممكن تخرج عن نطاق الضريبة بشروط.
+            </li>
+          <li><strong>البضاعة الذي بتُستهلك داخل المنطقة</strong> بتبقى
+            خاضعة للضريبة حتى لو المشتري في منطقة حرة.
+            </li>
+        </ul>
+      </div>
+
+      <p>بتعلّم العميل أو المستودع إنه في منطقة حرة معيّنة مرة واحدة،
+        والنظام بيراجع كل فاتورة ويقولك: «الفاتورة هذه اتعلّمت صفر بينما القواعد بتقول
+        خاضعة» — قبل ما تروح للهيئة، ليس بعدها.
+        </p>
+    </section>
+
+    <section id="margin">
+      <h2>نظام هامش الربح</h2>
+      <p>للبضاعة المستعملة — عربيات، أجهزة، أثاث. الضريبة على الفرق بين
+        سعر البيع وسعر الشراء، ليس على السعر كله.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">مثال — عربية مستعملة
+          </div>
+        <table>
+          <tbody><tr><td>سعر البيع للعميل</td>
+            <td>60,000.00</td></tr>
+          <tr><td>تكلفة شرائها</td>
+            <td>56,000.00</td></tr>
+          <tr><td>الهامش</td><td>4,000.00</td></tr>
+          <tr><td>الضريبة داخل الهامش (٥ ÷ ١٠٥)
+            </td><td>190.48</td></tr>
+          <tr class="tot"><td>الذي العميل بيدفعه
+            </td><td>60,000.00</td></tr>
+        </tbody></table>
+        <p class="note">نظام ما يعرفش القاعدة هذه كان هيحسب ٣,٠٠٠ درهم
+          ضريبة ويحمّلها للعميل — <strong>٢,٨٠٩ درهم زيادة على كل عربية</strong>.
+          والفاتورة المطبوعة ما بتذكرش مبلغ الضريبة، لأن ذكره بيسمح للمشتري يخصم ضريبة
+          ما اتحمّلهاش.
+          </p>
+      </div>
+
+      <p>ولو العربية بيعت بخسارة، الهامش يكون صفر والضريبة صفر — ليس
+        رقم سالب يقاصّ عربية أخرى ربحت. المقاصة هذه حسابياً مرتبة وقانونياً خطأ.
+        </p>
+    </section>
+
+    <section id="excise">
+      <h2>الضريبة الانتقائية</h2>
+      <p>للتبغ ومشروبات الطاقة والمشروبات الغازية والمحلاة وأجهزة التدخين
+        الإلكتروني. الضريبة بتتحسب على <strong>سعر التجزئة المعلن من الهيئة</strong> —
+        ليس على تكلفتك ولا على سعر بيعك.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">مثال — استيراد مشروب طاقة
+          </div>
+        <table>
+          <tbody><tr><td>الكمية المستوردة</td>
+            <td>1,000</td></tr>
+          <tr><td>سعر التجزئة المعلن للعلبة
+            </td><td>12.00</td></tr>
+          <tr><td>النسبة (مشروبات طاقة)</td>
+            <td>100%</td></tr>
+          <tr><td>الضريبة المستحقة</td>
+            <td>12,000.00</td></tr>
+          <tr><td>ناقص إعادة تصدير ١٠٠ علبة
+            </td><td>−1,200.00</td></tr>
+          <tr class="tot"><td>الصافي المستحق</td>
+            <td>10,800.00</td></tr>
+        </tbody></table>
+        <p class="note">لو سعر بيعك ١٠ دراهم، النظام الذي بياخد سعر البيع
+          كان هيحسب ١٠,٠٠٠ بدل ١٢,٠٠٠ — نقص ألفين في إقرار واحد.
+          </p>
+      </div>
+    </section>
+
+    <section id="accounting">
+      <h2>المحاسبة</h2>
+      <p>كل عملية في النظام بتعمل قيدها المحاسبي وحدها. لا يوجد «ترحيل آخر
+        الشهر» ومفيش خطوة يدوية ممكن حد ينساها.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">فاتورة مبيعات — القيد التلقائي
+          </div>
+        <table>
+          <tbody><tr><td>من حساب: ذمم مدينة</td>
+            <td>1,476.30</td></tr>
+          <tr><td>إلى حساب: المبيعات</td>
+            <td>1,406.00</td></tr>
+          <tr><td>إلى حساب: ضريبة مستحقة</td>
+            <td>70.30</td></tr>
+        </tbody></table>
+        <p class="note">وقيد آخر منفصل لتكلفة البضاعة المباعة، كي
+          المراجع يقرأ «بعنا بكم» و«كلّفتنا كم» كل واحد وحده.
+          </p>
+      </div>
+
+      <h3>التقارير المتاحة</h3>
+      <ul>
+        <li>ميزان المراجعة، قائمة الدخل، الميزانية العمومية
+          </li>
+        <li>قائمة التدفقات النقدية، ودفتر الأستاذ لأي حساب
+          </li>
+        <li>الموازنة مقابل الفعلي، وضريبة الشركات
+          </li>
+      </ul>
+    </section>
+
+    <section id="collections">
+      <h2>التحصيل والشيكات الآجلة</h2>
+      <p>الشيك الآجل شيء أساسية في السوق الإماراتي، ومعظم الأنظمة
+        بتتعامل معاه غلط: يا بتعتبره أموال دخلت، يا بتتجاهله لحد ما يتصرف.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">عميل بيدي شيك بـ١٠,٠٠٠ استحقاقه بعد ٩٠ يوم
+          </div>
+        <table>
+          <tbody><tr><td>يوم الاستلام — الفاتورة
+            </td>
+            <td>اتقفلت</td></tr>
+          <tr><td>يوم الاستلام — البنك
+            </td>
+            <td>ما اتحركش</td></tr>
+          <tr><td>يوم الاستلام — شيكات برسم التحصيل
+            </td><td>10,000.00</td></tr>
+          <tr class="tot"><td>بعد ٩٠ يوم لما يتصرف — البنك
+            </td><td>10,000.00</td></tr>
+        </tbody></table>
+        <p class="note">يعني لا أحد يطالب عميل دفع، ومحدش ينفق أموال ما زال
+          لم تصل. ولو الشيك ارتدّ، الدين يعود تلقائياً على العميل وبيظهر في المتابعة
+          آخر — ومعاه مصاريف الارتداد.
+          </p>
+      </div>
+
+      <p>وفيه تقويم استحقاق بيوريك الشيكات الجاية والرايحة بالأسبوع،
+        ومتابعة متأخرات بتبعت تذكيرات متدرجة بالإيميل أو واتساب.
+        </p>
+    </section>
+
+    <section id="bank">
+      <h2>البنك والعملات الأجنبية</h2>
+      <p>بتستورد كشف حساب البنك، والنظام بيحاول يطابق كل سطر مع الدفعات
+        المسجلة. الذي ما بيتطابقش بيفضل ظاهر — والتسوية بتعلن الفرق بدل ما تخبيه.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">بيع بالدولار وتحصيله بعد شهر
+          </div>
+        <table>
+          <tbody><tr><td>فاتورة ١٠,٠٠٠ دولار — سعر يوم الفاتورة ٣٫٦٧٢٥
+            </td>
+            <td>36,725.00</td></tr>
+          <tr><td>التحصيل — سعر يوم التحصيل ٣٫٦٧٤٠
+            </td><td>36,740.00</td></tr>
+          <tr class="tot"><td>فرق عملة محقّق (ربح)
+            </td><td>15.00</td></tr>
+        </tbody></table>
+        <p class="note">والأرصدة المفتوحة بالعملات الأجنبية بتتعاد
+          تقييمها آخر الفترة بفروق غير محقّقة — من غير ما تلمس الفاتورة الأصلية.
+          </p>
+      </div>
+    </section>
+
+    <section id="stock">
+      <h2>المخزون</h2>
+      <p>تكلفة متوسطة متحرّكة، مخازن متعددة، تشغيلات وتواريخ صلاحية،
+        وحركات مخزون مالهاش رجعة — كل حركة سطر مستقل، ومفيش تعديل بأثر رجعي.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">كيف التكلفة المتوسطة بتتحرك
+          </div>
+        <table>
+          <tbody><tr><td>استلام ١٠٠ قطعة بـ٢٠٫٠٠
+            </td>
+            <td>المتوسط ٢٠٫٠٠</td></tr>
+          <tr><td>استلام ١٠٠ قطعة بـ٢٤٫٠٠
+            </td>
+            <td>المتوسط ٢٢٫٠٠</td></tr>
+          <tr><td>بيع ٥٠ قطعة</td>
+            <td>تكلفة ١,١٠٠٫٠٠</td></tr>
+          <tr class="tot"><td>الرصيد ١٥٠ قطعة
+            </td><td>3,300.00</td></tr>
+        </tbody></table>
+        <p class="note">تكلفة البيع بتتجمّد على الحركة ساعة ما تحصل.
+          شراء بعدها بيغيّر المتوسط للمستقبل، لكن ما بيرجعش يعدّل تكلفة بيعة اتعملت
+          خلاص — ولو رجع، كل تقرير ربحية قديم كان هيتغير من خلف ظهرك.
+          </p>
+      </div>
+    </section>
+
+    <section id="returns">
+      <h2>المرتجعات</h2>
+      <p>ليس كل شيء بترجع بترجع للرف. الوحدة هذه بتفصل بين البضاعة
+        والفلوس: المرتجع بيتحكم في المخزون، والإشعار الدائن بيتحكم في الحساب.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">مرتجع فيه ١١ قطعة بتلات مصائر
+          </div>
+        <table>
+          <tbody><tr><td>٦ سليمة — ترجع للمخزون
+            </td>
+            <td>+ مخزون</td></tr>
+          <tr><td>٣ الأختام مكسورة — حجر للفحص
+            </td>
+            <td>ليس للبيع</td></tr>
+          <tr><td>٢ تالفة — إعدام</td>
+            <td>تُشطب</td></tr>
+        </tbody></table>
+        <p class="note">القطعة التالفة الذي ترجع للرف هي بالظبط الغلطة
+          الذي الوحدة هذه موجودة تمنعها. وتكلفة المُعدَم موجودة أصلاً في تكلفة المبيعات
+          من البيعة الأصلية — فإدخالها وإخراجها آخر كان هيضاعف الخسارة.
+          </p>
+      </div>
+    </section>
+
+    <section id="purchasing">
+      <h2>المشتريات والشحن</h2>
+      <ul>
+        <li><strong>أوامر شراء واستلام:</strong> الاستلام الجزئي مدعوم،
+          والفاتورة بتتقارن بأمر الشراء وبالمستلم فعلاً.
+          </li>
+        <li><strong>الاحتساب العكسي:</strong> على الاستيراد، بيتحسب
+          ويظهر في الخانة ٣ من الإقرار تلقائياً.
+          </li>
+        <li><strong>كشف الفواتير المكررة:</strong> النظام بيمنع تسجيل نفس
+          فاتورة المورد مرتين — والمفتاح هو المورد ورقم فاتورته مع بعض، ليس الرقم وحده،
+          لأن موردين مختلفين بيرقّموا فواتيرهم ٠٠١.
+          </li>
+      </ul>
+
+      <div class="ex">
+        <div class="ex-h">أمر تسليم من خط الشحن وساعة الأرضيات
+          </div>
+        <table>
+          <tbody><tr><td>تاريخ الإصدار</td>
+            <td>12 AUG</td></tr>
+          <tr><td>نهاية الفترة المجانية</td>
+            <td>22 AUG</td></tr>
+          <tr><td>حاويتان 40HC</td>
+            <td>MSKU7741125</td></tr>
+          <tr class="tot"><td>الحالة النهاردة</td>
+            <td>باقي ٧ أيام</td></tr>
+        </tbody></table>
+        <p class="note">شاشة بتوريك الحاويات الذي قربت أرضياتها تخلص
+          مرتبة بالأقرب — لأن يوم تأخير على حاوية بيتكلف أكتر من اشتراك شهر.
+          </p>
+      </div>
+    </section>
+
+    <section id="manufacturing">
+      <h2>التصنيع وأوامر التشغيل</h2>
+      <p>أمر تشغيل بيسحب خامات، بيحمّل ساعات عمل وتحميل، وبيستلم منتج
+        نهائي بتكلفته الحقيقية. والفرق بين المخطط والفعلي هو سبب وجود الوحدة أصلاً.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">أمر تشغيل ٢٠ كرسي، طلع ١٨
+          </div>
+        <table>
+          <tbody><tr><td>خامات مسحوبة</td>
+            <td>4,000.00</td></tr>
+          <tr><td>أجور ١٨ ساعة × ٤٥</td>
+            <td>810.00</td></tr>
+          <tr><td>تحميل</td><td>350.00</td></tr>
+          <tr><td>إجمالي تكلفة التشغيلة</td>
+            <td>5,160.00</td></tr>
+          <tr class="tot"><td>تكلفة الكرسي الواحد (÷ ١٨ سليم)
+            </td><td>286.67</td></tr>
+        </tbody></table>
+        <p class="note">القسمة على ١٨ ليس على ٢٠. القسمة على العدد المخطط
+          كانت هتدي ٢٥٨ — تقييم مخزون أقل من الحقيقة وهامش ربح متضخّم على كل كرسي
+          هتبيعه بعد هكذا، للأبد، ومن غير ما شيء تنبّهك.
+          </p>
+      </div>
+    </section>
+
+    <section id="pos">
+      <h2>نقطة البيع</h2>
+      <ul>
+        <li>بيع فوري بفاتورة مبسّطة وإيصال حراري
+          </li>
+        <li>الأسعار شاملة الضريبة، والنظام بيفصلها تلقائياً
+          </li>
+        <li>وصفات بتنقّص المكوّنات من المخزون مع كل بيعة — للمطاعم
+          </li>
+        <li>رسوم خدمة ونوع الطلب: صالة، تيك أواي، توصيل
+          </li>
+      </ul>
+    </section>
+
+    <section id="fleet">
+      <h2>الأسطول والتوصيل</h2>
+      <p>أذون تسليم، إسناد عربية وسائق، وتطبيق سائق فيه إثبات تسليم
+        بالتوقيع والصورة والموقع. وتكلفة كل عربية بتتجمّع من الوقود والصيانة
+        والمخالفات.
+        </p>
+      <p>وفيه إعداد بيحدد: المخزون بيخرج عند إصدار الفاتورة ولا عند
+        التسليم الفعلي؟ الاتنين صح — غير أن لازم النظام يعرف انت بتشتغل بأنهي واحد.
+        </p>
+    </section>
+
+    <section id="payroll">
+      <h2>الرواتب وحماية الأجور</h2>
+      <p>مسيّر رواتب شهري، وملف حماية الأجور <span class="en">WPS</span>
+        بالصيغة الذي البنك بيقبلها، ومكافأة نهاية الخدمة محسوبة حسب القانون
+        الإماراتي.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">موظف — مسيّر شهر
+          </div>
+        <table>
+          <tbody><tr><td>الراتب الأساسي</td>
+            <td>8,500.00</td></tr>
+          <tr><td>بدل سكن</td>
+            <td>2,500.00</td></tr>
+          <tr><td>بدل مواصلات</td>
+            <td>750.00</td></tr>
+          <tr><td>أوفرتايم ٦ ساعات</td>
+            <td>318.75</td></tr>
+          <tr><td>خصم يوم غياب</td>
+            <td>−395.83</td></tr>
+          <tr class="tot"><td>الصافي المستحق</td>
+            <td>11,672.92</td></tr>
+        </tbody></table>
+        <p class="note">نفس الرقم هذا بالظبط هو الذي بيروح في ملف الحماية
+          وهو الذي بيتسجل في الدفاتر — ليس تلات حسابات منفصلة ممكن تختلف.
+          </p>
+      </div>
+
+      <p>ومعاها الإجازات وأرصدتها والحضور والأوفرتايم، وتتبّع انتهاء
+        الإقامات والتأشيرات وبطاقات العمل.
+        </p>
+    </section>
+
+    <section id="projects">
+      <h2>المشاريع والمقاولات</h2>
+      <ul>
+        <li><strong>قيمة عقد وفوترة مرحلية:</strong> بتفوتر نسبة الإنجاز
+          والنظام بيتابع المتبقي.
+          </li>
+        <li><strong>أوامر تغيير:</strong> بتزود قيمة العقد بسجل واضح
+          لمين وافق وإمتى.
+          </li>
+        <li><strong>محتجزات:</strong> النسبة المحتجزة بتتفصل وبتفضل
+          ظاهرة لحد ما تُفرج.
+          </li>
+        <li><strong>تكلفة الشغلانة:</strong> ساعات وخامات ومصاريف لكل
+          مشروع، والهامش الحقيقي لكل واحدة.
+          </li>
+      </ul>
+    </section>
+
+    <section id="sales">
+      <h2>العملاء المحتملون وعمولات المندوبين
+        </h2>
+      <p>مسار بيع بسيط: عميل محتمل، مرحلة، نشاط، ثم مكسوب أو مخسور
+        بسبب مكتوب. والسبب مهم — «السعر» في ٤٠٪ من الصفقات المخسورة هذا اكتشاف، أما
+        ٤٠ جملة مختلفة بتقول نفس الحاجة فمش اكتشاف.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">العمولة بتُستحق على التحصيل ليس على الإصدار
+          </div>
+        <table>
+          <tbody><tr><td>فاتورة المندوب</td>
+            <td>50,000.00</td></tr>
+          <tr><td>المحصّل منها لحد الآن</td>
+            <td>30,000.00</td></tr>
+          <tr><td>نسبة العمولة ٢٫٥٪</td>
+            <td>—</td></tr>
+          <tr class="tot"><td>المستحق للمندوب</td>
+            <td>750.00</td></tr>
+        </tbody></table>
+        <p class="note">ليس ١,٢٥٠. الشركة ما بتدفعش عمولة على أموال ما
+          حصّلتهاش — والفاتورة نص المدفوعة بتستحق نص العمولة.
+          </p>
+      </div>
+    </section>
+
+    <section id="compliance">
+      <h2>تتبّع انتهاء المستندات</h2>
+      <p>الرخصة التجارية، شهادة التسجيل الضريبي، إقامات الموظفين، بطاقات
+        العمل، ملكيات العربيات، التأمينات. كل مستند بمدة تنبيه خاصة بيه.
+        </p>
+      <p>تأشيرة محتاجة تنبيه ٩٠ يوم قبل، ورخصة سيارة ٣٠ يوم كفاية.
+        الشاشة بتحترم الفرق هذا — وبتفصل «منتهي خلاص» عن «قرب ينتهي»، لأن الأول غرامة
+        شغالة والتاني موعد تحجزه.
+        </p>
+    </section>
+
+    <section id="checks">
+      <h2>فحوصات صحة الأرقام</h2>
+      <p>هذه الحاجة الذي بتفرق فكترة عن غيرها، وهي ليس ميزة بتتباع —
+        هي طريقة بناء. أخطر الأخطاء المحاسبية ليس الذي بتوقّع البرنامج، هذه الذي
+        بتعدي بهدوء وتظهر بعد سنة.
+        </p>
+
+      <div class="ex">
+        <div class="ex-h">أربعة أرقام قيمتها الوحيدة المقبولة صفر
+          </div>
+        <table>
+          <tbody><tr><td>عزل بيانات الشركات</td>
+            <td>0</td></tr>
+          <tr><td>قيمة المخزون مقابل حساب المخزون في الدفتر
+            </td><td>0.00</td></tr>
+          <tr><td>أرصدة العملاء والموردين مقابل حساباتهم
+            </td>
+            <td>0.00</td></tr>
+          <tr class="tot"><td>قيود غير متزنة
+            </td><td>0</td></tr>
+        </tbody></table>
+        <p class="note">أي رقم غير الصفر بيسمّي مسار غيّر رقم من غير ما
+          يقول للجهة التانية. الفحوصات هذه بتشتغل على بياناتك انت، وتقدر تشوفها في أي
+          وقت — ليس وعد في بروشور.
+          </p>
+      </div>
+    </section>
+
+    <section id="security">
+      <h2>الأمان والنسخ الاحتياطي</h2>
+      <ul>
+        <li><strong>عزل على مستوى قاعدة البيانات:</strong> بيانات كل شركة
+          معزولة بقواعد في القاعدة نفسها ليس بفلتر في الكود — يعني حتى الخطأ البرمجي
+          ما بيقدرش يخلي شركة تشوف بيانات شركة أخرى.
+          </li>
+        <li><strong>سجل تدقيق بسلسلة تحقق:</strong> كل تغيير مسجّل ومربوط
+          باللي قبله، فحذف سطر من السجل بيكسر السلسلة ويبان.
+          </li>
+        <li><strong>نسخ احتياطي مشفّر:</strong> يومي وتلقائي، ونسخة أخرى
+          خارج الخادم. والاسترجاع بيتجرّب على قاعدة اختبار — نسخة احتياطية ما اتجربتش
+          ليس نسخة احتياطية.
+          </li>
+        <li><strong>صلاحيات وأدوار:</strong> مين يشوف إيه ومين يوافق على
+          إيه، مع موافقات متعددة المراحل للعمليات الكبيرة.
+          </li>
+      </ul>
+    </section>
+
+    <section id="migration">
+      <h2>الانتقال من نظام قديم</h2>
+      <p>أخطر لحظة في عمر أي نظام محاسبي هي أول يوم فيه. شاشة الانتقال
+        بتستورد العملاء والموردين والأصناف وشجرة الحسابات والأرصدة الافتتاحية والفواتير
+        القديمة.
+        </p>
+
+      <div class="warn-box">
+        <strong>الحاجة الذي بتفرق:</strong>
+         النظام بيكشف الفاتورة المكررة <u>قبل</u> ما تدخل. لو فاتورة
+          اتسجلت في النظام القديم واتسجلت آخر في الاستيراد، كانت هتتحسب مرتين في إقرار
+          الضريبة ومرتين في الإيرادات — وده النوع الذي بيتكشف في المراجعة بعد سنة.
+        
+      </div>
+
+      <p>والأرصدة الافتتاحية بتترحّل كقيد افتتاحي متزن — يعني ميزان
+        المراجعة بيتوازن من أول يوم، وأي فرق بيظهر فوراً بدل ما يتسحب معاك سنة.
+        </p>
+    </section>
+
+    <section style="border-top:1px solid var(--line);padding-top:36px">
+      <h3 style="margin-top:0">ما زال عندك سؤال؟
+        </h3>
+      <p>أسهل شيء إني أوريك النظام على أرقام شركتك انت — نص ساعة
+        وبنمشي دورة كاملة.
+        </p>
+      <a class="btn btn-primary" href="./index.html#contact">
+        اطلب عرض توضيحي</a>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="color:#fff;margin-bottom:14px">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect fill="#4F46E5" x="13" y="11" width="9" height="42" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="11" width="38" height="9" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="27" width="26" height="9" rx="2.5"></rect>
+        <rect fill="#8B87F5" x="29" y="44" width="22" height="9" rx="2.5"></rect>
+      </svg>
+          فكترة
+        </div>
+        <p style="color:#98A1B2;font-size:14px;max-width:34ch">
+          نظام فوترة إلكترونية ومحاسبة للشركات في الإمارات.
+          </p>
+      </div>
+      <div>
+        <h5>المنتج</h5>
+        <a href="./index.html#modules">الوحدات</a>
+        <a href="./index.html#sectors">القطاعات</a>
+        <a href="./pricing.html">الأسعار</a>
+      </div>
+      <div>
+        <h5>الوثائق</h5>
+        <a href="#start">الدورة الكاملة</a>
+        <a href="#einvoicing">الفوترة الإلكترونية</a>
+        <a href="#vat">ضريبة القيمة المضافة</a>
+      </div>
+      <div>
+        <h5>تواصل</h5>
+        <a href="./index.html#contact">اطلب عرض</a>
+        <a href="mailto:hello@faktra.ae">hello@faktra.ae</a>
+      </div>
+    </div>
+    <div class="foot-end">
+      <span>© <span class="n">2026</span> فكترة. كل الحقوق محفوظة.
+        </span>
+      <span>الأمثلة توضيحية — راجع أرقامك مع محاسبك
+        </span>
+    </div>
+  </div>
+</footer>
+
+<script src="../site.js"></script>
+
+
+</body></html>

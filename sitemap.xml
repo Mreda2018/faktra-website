@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://faktra.ae/ar/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://faktra.ae/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://faktra.ae/ar/"/>
+  </url>
+  <url>
+    <loc>https://faktra.ae/en/</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://faktra.ae/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://faktra.ae/ar/"/>
+  </url>
+
+  <url>
+    <loc>https://faktra.ae/ar/docs.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/docs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://faktra.ae/en/docs.html"/>
+  </url>
+  <url>
+    <loc>https://faktra.ae/en/docs.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/docs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://faktra.ae/en/docs.html"/>
+  </url>
+
+  <url>
+    <loc>https://faktra.ae/ar/pricing.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://faktra.ae/en/pricing.html"/>
+  </url>
+  <url>
+    <loc>https://faktra.ae/en/pricing.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://faktra.ae/en/pricing.html"/>
+  </url>
+
+  <url>
+    <loc>https://faktra.ae/pricing.md</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

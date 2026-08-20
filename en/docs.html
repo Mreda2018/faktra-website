@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en" dir="ltr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faktra documentation — every module explained with worked examples</title>
+<meta name="description" content="A detailed guide to Faktra: PINT AE e-invoicing, UAE VAT, Designated Zones, the margin scheme, stock, payroll and more — with a worked numeric example for each.">
+
+<link rel="canonical" href="https://faktra.ae/en/docs.html">
+<link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/docs.html">
+<link rel="alternate" hreflang="en" href="https://faktra.ae/en/docs.html">
+<link rel="alternate" hreflang="x-default" href="https://faktra.ae/ar/docs.html">
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_AE">
+<meta property="og:site_name" content="Faktra">
+<meta property="og:title" content="Faktra documentation — every module explained with worked examples">
+<meta property="og:description" content="A detailed guide to Faktra: PINT AE e-invoicing, UAE VAT, Designated Zones, the margin scheme, stock, payroll and more — with a worked numeric example for each.">
+<meta property="og:url" content="https://faktra.ae/en/docs.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Faktra",
+   "item": "https://faktra.ae/en/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Faktra documentation",
+   "item": "https://faktra.ae/en/docs.html"
+  }
+ ]
+}
+</script>
+
+<link rel="stylesheet" href="../site.css">
+<style>
+  .doc { display: grid; grid-template-columns: 250px 1fr; gap: 52px;
+    align-items: start; padding: 44px 0 90px; }
+
+  .side { position: sticky; top: calc(var(--nav-h) + 24px); max-height: calc(100vh - 120px);
+    overflow-y: auto; padding-inline-end: 8px; }
+  .side h6 { font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--muted); margin: 22px 0 8px; font-weight: 700; }
+  .side h6:first-child { margin-top: 0; }
+  .side a { display: block; padding: 7px 12px; border-radius: 8px; text-decoration: none;
+    font-size: 14px; color: var(--ink-2); border-inline-start: 2px solid transparent;
+    transition: background .15s, color .15s, border-color .15s; }
+  .side a:hover { background: var(--paper); color: var(--indigo); }
+  .side a.on { background: var(--indigo-wash); color: var(--indigo-deep); font-weight: 700;
+    border-inline-start-color: var(--indigo); }
+
+  .art > section { padding: 0 0 52px; scroll-margin-top: calc(var(--nav-h) + 24px); }
+  .art h2 { font-size: clamp(24px, 2.6vw, 31px); margin-top: 8px; }
+  .art h3 { font-size: 18px; margin-top: 28px; }
+  .art p { font-size: 15.5px; }
+  .art ul { padding-inline-start: 20px; }
+  .art li { font-size: 15.5px; color: var(--ink-2); margin-bottom: 7px; }
+
+  /* صندوق المثال — القلب بتاع الصفحة دي */
+  .ex { background: var(--paper); border: 1px solid var(--line);
+    border-inline-start: 3px solid var(--indigo); border-radius: 0 var(--r) var(--r) 0;
+    padding: 20px 22px; margin: 20px 0; }
+  html[dir="ltr"] .ex { border-radius: var(--r) 0 0 var(--r); }
+  .ex-h { font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--indigo); font-weight: 800; margin-bottom: 12px; }
+  .ex table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 6px 0; }
+  .ex td { padding: 7px 0; border-bottom: 1px solid var(--line); }
+  .ex tr:last-child td { border-bottom: 0; }
+  .ex td:last-child { text-align: end; font-family: var(--mono); direction: ltr;
+    font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .ex .tot td { font-weight: 800; border-top: 2px solid var(--line-strong);
+    border-bottom: 0; padding-top: 10px; }
+  .ex p:last-child { margin-bottom: 0; }
+  .ex .note { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+
+  .warn-box { background: var(--warn-wash); border: 1px solid #F3D9AE;
+    border-radius: var(--r); padding: 16px 18px; margin: 20px 0; font-size: 14.5px; }
+  .warn-box strong { color: var(--warn); }
+
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px;
+    font-size: 14.5px; margin: 16px 0; }
+  .kv dt { font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .kv dd { margin: 0; color: var(--ink-2); }
+
+  @media (max-width: 900px) {
+    .doc { grid-template-columns: 1fr; gap: 26px; padding-top: 26px; }
+    .side { position: static; max-height: none;
+      border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+    .side-in { display: flex; flex-wrap: wrap; gap: 5px; }
+    .side h6 { width: 100%; margin: 12px 0 4px; }
+    .side a { border-inline-start: 0; border: 1px solid var(--line); font-size: 13px;
+      padding: 6px 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="shell nav-in">
+    <a class="brand" href="./index.html">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect fill="#4F46E5" x="13" y="11" width="9" height="42" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="11" width="38" height="9" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="27" width="26" height="9" rx="2.5"></rect>
+        <rect fill="#8B87F5" x="29" y="44" width="22" height="9" rx="2.5"></rect>
+      </svg>
+      Faktra
+    </a>
+    <div class="nav-links">
+      <a href="./index.html#modules">Modules</a>
+      <a href="./index.html#sectors">Sectors</a>
+      <a href="./docs.html" class="on">Docs</a>
+      <a href="./pricing.html">Pricing</a>
+    </div>
+    <div class="nav-act">
+      <a class="lang" href="../ar/docs.html" hreflang="ar" lang="ar">ع</a>
+      <a class="btn btn-primary" href="./index.html#contact">
+        Book a demo</a>
+      <button class="burger" aria-expanded="false" aria-label="Menu">
+        <span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="shell doc">
+
+  <!-- ══════════════ القائمة الجانبية ══════════════ -->
+  <aside class="side" data-doc-nav="">
+    <div class="side-in">
+      <h6>Basics</h6>
+      <a href="#start">The full cycle</a>
+      <a href="#invoicing">Invoicing</a>
+      <a href="#einvoicing">E-invoicing</a>
+
+      <h6>Tax</h6>
+      <a href="#vat">VAT</a>
+      <a href="#zones">Designated Zones</a>
+      <a href="#margin">Margin scheme</a>
+      <a href="#excise">Excise</a>
+
+      <h6>Money</h6>
+      <a href="#accounting">Accounting</a>
+      <a href="#collections">Collections &amp; cheques</a>
+      <a href="#bank">Bank &amp; currencies</a>
+
+      <h6>Operations</h6>
+      <a href="#stock">Stock</a>
+      <a href="#returns">Returns</a>
+      <a href="#purchasing">Purchasing &amp; shipping</a>
+      <a href="#manufacturing">Manufacturing</a>
+      <a href="#pos">Point of sale</a>
+      <a href="#fleet">Fleet &amp; delivery</a>
+
+      <h6>People &amp; projects</h6>
+      <a href="#payroll">Payroll &amp; WPS</a>
+      <a href="#projects">Projects</a>
+      <a href="#sales">Leads &amp; commission</a>
+      <a href="#compliance">Document expiry</a>
+
+      <h6>Trust</h6>
+      <a href="#checks">Health checks</a>
+      <a href="#security">Security &amp; backup</a>
+      <a href="#migration">Migration</a>
+    </div>
+  </aside>
+
+  <!-- ══════════════ المحتوى ══════════════ -->
+  <main class="art">
+    <h1 style="font-size:clamp(26px,3vw,36px);margin-bottom:8px">Faktra documentation</h1>
+
+    <section id="start">
+      <div class="eyebrow">Start here</div>
+      <h2>One full cycle</h2>
+      <p>
+        Everything in Faktra turns around one cycle. Understand it and
+        you understand the system; every other module hangs off these points.</p>
+
+      <ol style="font-size:15.5px;color:var(--ink-2);padding-inline-start:20px">
+        <li><strong>A customer and an item.</strong>
+          
+           The customer with their TRN, and the item with its price and tax category.</li>
+        <li><strong>A quotation.</strong>
+          
+           Optional, and it becomes an invoice in one click without retyping.</li>
+        <li><strong>A draft invoice.</strong>
+          
+           Edit it freely. It has no legal number yet and is not in the books.</li>
+        <li><strong>Issuing.</strong>
+          
+           Everything happens at once: a sequential legal number, the
+          journal entry, the stock movement, cost of sales, and the e-invoicing XML.
+          One transaction — all of it, or none of it.</li>
+        <li><strong>Collection.</strong>
+          
+           A payment or a cheque. The invoice closes and the entry is posted.</li>
+        <li><strong>Reports.</strong>
+          
+           The VAT return, ageing, profit, stock — all built from the
+          same data, not from separate tables.</li>
+      </ol>
+
+      <div class="warn-box">
+        <strong>One rule that matters:</strong>
+        
+         Once issued, an invoice is never edited. Corrections go through
+          a credit or debit note — not to be awkward, but because that is what makes
+          your books survive an audit.
+      </div>
+    </section>
+
+    <section id="invoicing">
+      <h2>Invoicing</h2>
+      <p>
+        A UAE-compliant tax invoice, Arabic and English on the same page,
+        with a QR code. Numbering is sequential and cannot gap or repeat.</p>
+
+      <dl class="kv">
+        <dt>Types</dt>
+        <dd>
+          Invoice, simplified invoice, credit note, debit note, quotation,
+          recurring invoice, advance invoice</dd>
+        <dt>Discounts</dt>
+        <dd>
+          Per line or per document, by percentage or amount</dd>
+        <dt>Currencies</dt>
+        <dd>
+          Any currency; the ledger records dirhams at the invoice-date rate</dd>
+      </dl>
+
+      <div class="ex">
+        <div class="ex-h">
+          Example — an invoice with a discount</div>
+        <table>
+          <tbody><tr><td>
+            Olive oil 500ml × 40 at 37.00</td><td>1,480.00</td></tr>
+          <tr><td>Line discount 5%</td>
+            <td>−74.00</td></tr>
+          <tr><td>Net before VAT</td>
+            <td>1,406.00</td></tr>
+          <tr><td>VAT 5%</td>
+            <td>70.30</td></tr>
+          <tr class="tot"><td>Total due</td>
+            <td>1,476.30</td></tr>
+        </tbody></table>
+        <p class="note">
+          VAT is computed once per group, not per line. The difference is
+          a fils or two — and that is exactly what makes the tax portal accept or
+          reject a filing.</p>
+      </div>
+    </section>
+
+    <section id="einvoicing">
+      <h2>E-invoicing</h2>
+      <p>
+        Faktra produces a <span class="en">PINT AE</span> XML file for
+        every invoice, validates it before sending, and keeps an archived copy. An
+        outbox tracks the status of each one and retries what fails.</p>
+
+      <div class="warn-box">
+        <strong>Important to be clear about:</strong>
+        
+         Faktra is <u>not</u> an accredited service provider. Official
+          reporting goes through a provider you contract with, and the system connects
+          to it. Any software claiming to report officially on its own should be asked
+          to show its accreditation.
+      </div>
+
+      <h3>What is validated first</h3>
+      <ul>
+        <li>
+          Both parties' TRN and its format</li>
+        <li>
+          Line totals reconciling to the invoice total, to the fils</li>
+        <li>
+          Tax groups agreeing with the rates declared</li>
+        <li>
+          The original invoice existing when a credit note is issued</li>
+      </ul>
+    </section>
+
+    <section id="vat">
+      <h2>VAT</h2>
+      <p>
+        The return is built from the invoices themselves, not from a
+        separate table somebody updates by hand, so it cannot disagree with what you
+        actually issued.</p>
+
+      <div class="ex">
+        <div class="ex-h">Return boxes</div>
+        <table>
+          <tbody><tr><td>
+            1 — Standard rated supplies</td><td>248,510.00</td></tr>
+          <tr><td>
+            3 — Reverse charge</td><td>18,400.00</td></tr>
+          <tr><td>
+            4 — Zero rated</td><td>62,000.00</td></tr>
+          <tr><td>5 — Exempt</td>
+            <td>0.00</td></tr>
+          <tr class="tot"><td>VAT due</td>
+            <td>12,425.50</td></tr>
+        </tbody></table>
+        <p class="note">
+          Every box opens into the invoices behind it. Not a bare number.</p>
+      </div>
+    </section>
+
+    <section id="zones">
+      <h2>Designated Zones</h2>
+      <p>
+        This is the rule people get wrong most often in the UAE, because
+        intuition says one thing and the law says another. Faktra knows the four rules
+        and reviews every invoice against them.</p>
+
+      <div class="ex">
+        <div class="ex-h">The four rules</div>
+        <ul style="margin:0;padding-inline-start:18px">
+          <li>
+            <strong>Selling into a Designated Zone is not an export.</strong>
+            A company in JAFZA is a UAE company; a mainland sale to it is standard rated.</li>
+          <li>
+            <strong>The rule covers goods only.</strong> Services supplied
+            inside a Designated Zone are taxed like anywhere else.</li>
+          <li>
+            <strong>Goods moving between two Designated Zones</strong>
+            can fall outside VAT, under conditions.</li>
+          <li>
+            <strong>Goods consumed inside the zone</strong> remain taxable
+            even when the buyer is in a free zone.</li>
+        </ul>
+      </div>
+
+      <p>
+        You flag a customer or warehouse as being in a Designated Zone
+        once, and the system reviews every invoice and tells you "this one is marked
+        zero-rated while the rules say standard" — before it reaches the authority,
+        not after.</p>
+    </section>
+
+    <section id="margin">
+      <h2>The profit margin scheme</h2>
+      <p>
+        For second-hand goods — cars, equipment, furniture. The tax is on
+        the difference between what you sold it for and what you paid, not on the
+        whole price.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          Example — a used car</div>
+        <table>
+          <tbody><tr><td>Sold to the customer for</td>
+            <td>60,000.00</td></tr>
+          <tr><td>Bought for</td>
+            <td>56,000.00</td></tr>
+          <tr><td>Margin</td><td>4,000.00</td></tr>
+          <tr><td>
+            VAT inside the margin (5/105)</td><td>190.48</td></tr>
+          <tr class="tot"><td>
+            What the customer pays</td><td>60,000.00</td></tr>
+        </tbody></table>
+        <p class="note">
+          A system that doesn't know the rule would charge 3,000 in tax —
+          <strong>2,809 too much on every car</strong>. And the printed invoice does not
+          state the VAT amount, because stating it would let the buyer reclaim tax that
+          was never charged.</p>
+      </div>
+
+      <p>
+        And if a car sells at a loss the margin floors at zero — not a
+        negative that nets off against another car that made a profit. That netting is
+        tidy arithmetic and a misdeclaration.</p>
+    </section>
+
+    <section id="excise">
+      <h2>Excise tax</h2>
+      <p>
+        For tobacco, energy and carbonated and sweetened drinks, and
+        electronic smoking devices. The tax is a percentage of the
+        <strong>published retail price</strong> — not your cost and not your selling
+        price.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          Example — importing an energy drink</div>
+        <table>
+          <tbody><tr><td>Quantity imported</td>
+            <td>1,000</td></tr>
+          <tr><td>
+            Published retail price per can</td><td>12.00</td></tr>
+          <tr><td>Rate (energy drinks)</td>
+            <td>100%</td></tr>
+          <tr><td>Excise due</td>
+            <td>12,000.00</td></tr>
+          <tr><td>
+            Less 100 cans re-exported</td><td>−1,200.00</td></tr>
+          <tr class="tot"><td>Net payable</td>
+            <td>10,800.00</td></tr>
+        </tbody></table>
+        <p class="note">
+          If your selling price is 10, a system reaching for the price you
+          already typed would compute 10,000 instead of 12,000 — two thousand short on
+          one return.</p>
+      </div>
+    </section>
+
+    <section id="accounting">
+      <h2>Accounting</h2>
+      <p>
+        Every operation posts its own journal entry. There is no
+        "month-end posting" step and no manual stage anybody can forget.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          A sales invoice — the automatic entry</div>
+        <table>
+          <tbody><tr><td>Dr Trade receivables</td>
+            <td>1,476.30</td></tr>
+          <tr><td>Cr Sales</td>
+            <td>1,406.00</td></tr>
+          <tr><td>Cr VAT payable</td>
+            <td>70.30</td></tr>
+        </tbody></table>
+        <p class="note">
+          Plus a separate entry for cost of goods sold, so an auditor
+          reads "what we sold it for" and "what it cost us" independently.</p>
+      </div>
+
+      <h3>Reports available</h3>
+      <ul>
+        <li>
+          Trial balance, income statement, balance sheet</li>
+        <li>
+          Cash flow statement, and the general ledger for any account</li>
+        <li>
+          Budget versus actual, and corporate tax</li>
+      </ul>
+    </section>
+
+    <section id="collections">
+      <h2>Collections &amp; post-dated cheques</h2>
+      <p>
+        Post-dated cheques are central in the UAE market and most systems
+        get them wrong: either treating them as cash received, or ignoring them until
+        they clear.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          A customer hands over a 10,000 cheque maturing in 90 days</div>
+        <table>
+          <tbody><tr><td>
+            On receipt — the invoice</td>
+            <td>settled</td></tr>
+          <tr><td>
+            On receipt — the bank</td>
+            <td>unchanged</td></tr>
+          <tr><td>
+            On receipt — cheques receivable</td><td>10,000.00</td></tr>
+          <tr class="tot"><td>
+            After 90 days when it clears — the bank</td><td>10,000.00</td></tr>
+        </tbody></table>
+        <p class="note">
+          So nobody chases a customer who has paid, and nobody spends
+          money that has not arrived. If the cheque bounces the debt returns to the
+          customer automatically and reappears in collections — with the bank charge
+          alongside it.</p>
+      </div>
+
+      <p>
+        There is a maturity calendar showing incoming and outgoing cheques
+        by week, and a dunning process that sends escalating reminders by email or
+        WhatsApp.</p>
+    </section>
+
+    <section id="bank">
+      <h2>Bank &amp; foreign currency</h2>
+      <p>
+        You import the bank statement and the system matches each line to
+        a recorded payment. What doesn't match stays visible, and the reconciliation
+        states its difference rather than hiding it.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          A dollar sale collected a month later</div>
+        <table>
+          <tbody><tr><td>
+            Invoice USD 10,000 — rate on invoice date 3.6725</td>
+            <td>36,725.00</td></tr>
+          <tr><td>
+            Collected — rate on the day 3.6740</td><td>36,740.00</td></tr>
+          <tr class="tot"><td>
+            Realised exchange gain</td><td>15.00</td></tr>
+        </tbody></table>
+        <p class="note">
+          Open foreign-currency balances are revalued at period end as
+          unrealised differences, without touching the original invoice.</p>
+      </div>
+    </section>
+
+    <section id="stock">
+      <h2>Stock</h2>
+      <p>
+        Moving average cost, multiple warehouses, batches and expiry, and
+        append-only stock movements — every movement is its own row and nothing is
+        edited retroactively.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          How the average moves</div>
+        <table>
+          <tbody><tr><td>
+            Receive 100 at 20.00</td>
+            <td>avg 20.00</td></tr>
+          <tr><td>
+            Receive 100 at 24.00</td>
+            <td>avg 22.00</td></tr>
+          <tr><td>Sell 50</td>
+            <td>cost 1,100.00</td></tr>
+          <tr class="tot"><td>
+            Balance 150 units</td><td>3,300.00</td></tr>
+        </tbody></table>
+        <p class="note">
+          The cost of a sale is frozen on the movement when it happens. A
+          later purchase moves the average forward but never rewrites a sale already
+          made — if it did, every historic profit report would change behind your back.</p>
+      </div>
+    </section>
+
+    <section id="returns">
+      <h2>Goods returns</h2>
+      <p>
+        Not everything that comes back goes back on the shelf. This module
+        separates the goods from the money: the return owns the stock, the credit note
+        owns the account.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          A return of 11 units with three dispositions</div>
+        <table>
+          <tbody><tr><td>
+            6 good — back into stock</td>
+            <td>+ stock</td></tr>
+          <tr><td>
+            3 seals broken — quarantined</td>
+            <td>not sellable</td></tr>
+          <tr><td>2 crushed — scrapped</td>
+            <td>written off</td></tr>
+        </tbody></table>
+        <p class="note">
+          A crushed unit going back on the shelf is precisely the error
+          this exists to prevent. And the scrapped cost is already in cost of sales from
+          the original sale — booking it in and out again would double the loss.</p>
+      </div>
+    </section>
+
+    <section id="purchasing">
+      <h2>Purchasing &amp; shipping</h2>
+      <ul>
+        <li>
+          <strong>Purchase orders and receipts:</strong> partial receipt is
+          supported, and the bill is matched against the order and what actually arrived.</li>
+        <li>
+          <strong>Reverse charge:</strong> on imports, computed and shown
+          in box 3 of the return automatically.</li>
+        <li>
+          <strong>Duplicate bill detection:</strong> the same supplier
+          invoice cannot be entered twice — keyed on the supplier and their reference
+          together, not the reference alone, because two suppliers both number an
+          invoice 001.</li>
+      </ul>
+
+      <div class="ex">
+        <div class="ex-h">
+          A shipping-line delivery order and the demurrage clock</div>
+        <table>
+          <tbody><tr><td>Issued</td>
+            <td>12 AUG</td></tr>
+          <tr><td>Free time ends</td>
+            <td>22 AUG</td></tr>
+          <tr><td>Two 40HC containers</td>
+            <td>MSKU7741125</td></tr>
+          <tr class="tot"><td>Today</td>
+            <td>7 days left</td></tr>
+        </tbody></table>
+        <p class="note">
+          A screen shows containers whose free time is running out, soonest
+          first — because one day of demurrage costs more than a month's subscription.</p>
+      </div>
+    </section>
+
+    <section id="manufacturing">
+      <h2>Manufacturing</h2>
+      <p>
+        A work order draws materials, carries labour hours and overhead,
+        and receives finished goods at their real cost. The variance between planned and
+        actual is the reason the module exists.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          A run of 20 chairs that yielded 18</div>
+        <table>
+          <tbody><tr><td>Materials drawn</td>
+            <td>4,000.00</td></tr>
+          <tr><td>Labour 18h × 45</td>
+            <td>810.00</td></tr>
+          <tr><td>Overhead</td><td>350.00</td></tr>
+          <tr><td>Total run cost</td>
+            <td>5,160.00</td></tr>
+          <tr class="tot"><td>
+            Cost per good chair (÷ 18)</td><td>286.67</td></tr>
+        </tbody></table>
+        <p class="note">
+          Divided by 18, not by 20. Dividing by the planned quantity would
+          give 258 — stock valued too low and an overstated margin on every chair sold
+          afterwards, forever, with nothing to flag it.</p>
+      </div>
+    </section>
+
+    <section id="pos">
+      <h2>Point of sale</h2>
+      <ul>
+        <li>
+          Instant sales with a simplified invoice and thermal receipt</li>
+        <li>
+          Tax-inclusive prices, split out automatically</li>
+        <li>
+          Recipes that consume ingredients from stock on every sale — for
+          restaurants</li>
+        <li>
+          Service charge and order type: dine-in, takeaway, delivery</li>
+      </ul>
+    </section>
+
+    <section id="fleet">
+      <h2>Fleet &amp; delivery</h2>
+      <p>
+        Delivery notes, vehicle and driver assignment, and a driver app
+        with signature, photo and location proof of delivery. Cost per vehicle
+        accumulates from fuel, maintenance and fines.</p>
+      <p>
+        A setting decides whether stock leaves on invoice or on actual
+        delivery. Both are valid — the system just has to know which one you run.</p>
+    </section>
+
+    <section id="payroll">
+      <h2>Payroll &amp; WPS</h2>
+      <p>
+        A monthly payroll run, the <span class="en">WPS</span> file in the
+        format the bank accepts, and end-of-service gratuity computed to UAE law.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          One employee — one month</div>
+        <table>
+          <tbody><tr><td>Basic salary</td>
+            <td>8,500.00</td></tr>
+          <tr><td>Housing allowance</td>
+            <td>2,500.00</td></tr>
+          <tr><td>Transport allowance</td>
+            <td>750.00</td></tr>
+          <tr><td>Overtime 6 hours</td>
+            <td>318.75</td></tr>
+          <tr><td>One unpaid day</td>
+            <td>−395.83</td></tr>
+          <tr class="tot"><td>Net pay</td>
+            <td>11,672.92</td></tr>
+        </tbody></table>
+        <p class="note">
+          That exact figure is what goes into the WPS file and what is
+          posted to the books — not three separate calculations that can disagree.</p>
+      </div>
+
+      <p>
+        Alongside it: leave and balances, attendance and overtime, and
+        expiry tracking for visas, residence permits and labour cards.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects &amp; contracting</h2>
+      <ul>
+        <li>
+          <strong>Contract value and progress billing:</strong> invoice a
+          percentage complete and the system tracks what remains.</li>
+        <li>
+          <strong>Variation orders:</strong> they raise the contract value
+          with a clear record of who approved and when.</li>
+        <li>
+          <strong>Retention:</strong> held back separately and visible
+          until released.</li>
+        <li>
+          <strong>Job costing:</strong> hours, materials and expenses per
+          project, and the real margin on each one.</li>
+      </ul>
+    </section>
+
+    <section id="sales">
+      <h2>
+        Leads &amp; sales commission</h2>
+      <p>
+        A simple pipeline: a lead, a stage, an activity, then won or lost
+        with a recorded reason. The reason matters — "price" on 40% of lost deals is a
+        finding; forty different sentences saying so is not.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          Commission is earned on collection, not on issue</div>
+        <table>
+          <tbody><tr><td>The rep's invoice</td>
+            <td>50,000.00</td></tr>
+          <tr><td>Collected so far</td>
+            <td>30,000.00</td></tr>
+          <tr><td>Commission rate 2.5%</td>
+            <td>—</td></tr>
+          <tr class="tot"><td>Earned</td>
+            <td>750.00</td></tr>
+        </tbody></table>
+        <p class="note">
+          Not 1,250. A business does not pay commission on money it has
+          not collected — a half-paid invoice earns half.</p>
+      </div>
+    </section>
+
+    <section id="compliance">
+      <h2>Document expiry</h2>
+      <p>
+        The trade licence, VAT certificate, staff visas, labour cards,
+        vehicle registrations, insurance. Each document with its own notice period.</p>
+      <p>
+        A visa needs 90 days' notice; a vehicle registration 30 is enough.
+        The screen respects that difference, and separates "already expired" from "due
+        soon" — the first is a fine already accruing, the second is an appointment to
+        book.</p>
+    </section>
+
+    <section id="checks">
+      <h2>Health checks</h2>
+      <p>
+        This is what sets Faktra apart, and it is not a feature so much as
+        a way of building. The dangerous accounting errors are not the ones that crash
+        the program — they are the ones that pass quietly and surface a year later.</p>
+
+      <div class="ex">
+        <div class="ex-h">
+          Four numbers whose only acceptable value is zero</div>
+        <table>
+          <tbody><tr><td>Tenant isolation</td>
+            <td>0</td></tr>
+          <tr><td>
+            Stock value vs the Inventory account</td><td>0.00</td></tr>
+          <tr><td>
+            Customer and supplier balances vs their control accounts</td>
+            <td>0.00</td></tr>
+          <tr class="tot"><td>
+            Unbalanced journal entries</td><td>0</td></tr>
+        </tbody></table>
+        <p class="note">
+          Anything other than zero names a path that changed one figure
+          without telling the other side. These run against your own data and you can
+          look at them any time — not a promise in a brochure.</p>
+      </div>
+    </section>
+
+    <section id="security">
+      <h2>Security &amp; backup</h2>
+      <ul>
+        <li>
+          <strong>Database-level isolation:</strong> each company's data is
+          separated by rules inside the database, not a filter in the code — so even a
+          programming mistake cannot let one company see another's data.</li>
+        <li>
+          <strong>An audit log with a verifiable chain:</strong> every
+          change is recorded and linked to the one before it, so deleting a row breaks
+          the chain visibly.</li>
+        <li>
+          <strong>Encrypted backups:</strong> daily and automatic, with a
+          second copy off the server. Restores are rehearsed on a test database — a
+          backup nobody has restored is not a backup.</li>
+        <li>
+          <strong>Roles and permissions:</strong> who sees what and who
+          approves what, with multi-step approvals for large transactions.</li>
+      </ul>
+    </section>
+
+    <section id="migration">
+      <h2>Migrating from an old system</h2>
+      <p>
+        The most dangerous moment in an accounting system's life is its
+        first day. The migration screen imports customers, suppliers, items, the chart of
+        accounts, opening balances and historic invoices.</p>
+
+      <div class="warn-box">
+        <strong>The part that matters:</strong>
+        
+         Duplicate invoices are detected <u>before</u> they land. An
+          invoice recorded in the old system and again on import would be counted twice
+          in the VAT return and twice in revenue — the kind of thing found at audit a
+          year later.
+      </div>
+
+      <p>
+        Opening balances post as a balanced opening entry — the trial
+        balance balances from day one, and any difference shows immediately instead of
+        being dragged along for a year.</p>
+    </section>
+
+    <section style="border-top:1px solid var(--line);padding-top:36px">
+      <h3 style="margin-top:0">
+        Still have a question?</h3>
+      <p>
+        The easiest thing is for me to show you the system on your own
+        numbers — half an hour for one full cycle.</p>
+      <a class="btn btn-primary" href="./index.html#contact">
+        Book a demo</a>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="color:#fff;margin-bottom:14px">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+        <rect fill="#4F46E5" x="13" y="11" width="9" height="42" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="11" width="38" height="9" rx="2.5"></rect>
+        <rect fill="#4F46E5" x="13" y="27" width="26" height="9" rx="2.5"></rect>
+        <rect fill="#8B87F5" x="29" y="44" width="22" height="9" rx="2.5"></rect>
+      </svg>
+          Faktra
+        </div>
+        <p style="color:#98A1B2;font-size:14px;max-width:34ch">
+          
+          E-invoicing and accounting for businesses in the UAE.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <a href="./index.html#modules">Modules</a>
+        <a href="./index.html#sectors">Sectors</a>
+        <a href="./pricing.html">Pricing</a>
+      </div>
+      <div>
+        <h5>Docs</h5>
+        <a href="#start">The full cycle</a>
+        <a href="#einvoicing">E-invoicing</a>
+        <a href="#vat">VAT</a>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <a href="./index.html#contact">Book a demo</a>
+        <a href="mailto:hello@faktra.ae">hello@faktra.ae</a>
+      </div>
+    </div>
+    <div class="foot-end">
+      <span>© <span class="n">2026</span> 
+        Faktra. All rights reserved.</span>
+      <span>
+        Examples are illustrative — check your own figures with your accountant</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../site.js"></script>
+
+
+</body></html>

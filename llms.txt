@@ -1,0 +1,77 @@
+# Faktra — فكترة
+
+> E-invoicing and accounting software for businesses in the United Arab
+> Emirates. Generates, validates and archives PINT AE invoices; computes
+> UAE VAT including Designated Zone rules, the profit margin scheme and
+> excise tax; and covers accounting, stock, purchasing, collections,
+> payroll with WPS, and twelve sector modules. Available in Arabic and
+> English. Last updated: 2026-08-15.
+
+Faktra is a multi-tenant web application. It is **not** an accredited
+service provider (ASP) for UAE e-invoicing: it produces and validates the
+PINT AE file, and official reporting is transmitted through an accredited
+provider that the customer appoints and the system connects to. Any claim
+that Faktra reports to the authority on its own would be false.
+
+## Key facts
+
+- **Market**: United Arab Emirates. Prices in AED.
+- **Languages**: Arabic and English, on separate URLs (`/ar/`, `/en/`).
+- **Plans**: Starter AED 199/month, Business AED 499/month,
+  Professional AED 899/month. Annual billing gives two months free.
+- **Trial**: 14 days, no payment card required.
+- **User limits**: 3, 10 and 25 users respectively.
+
+## UAE e-invoicing timeline
+
+Under UAE Ministerial Decisions 243 and 244 of 2025:
+
+- 1 July 2026 — voluntary onboarding opens
+- 30 October 2026 — ASP appointment deadline, turnover ≥ AED 50m
+- 1 January 2027 — mandatory reporting begins, large businesses
+- 31 March 2027 — ASP appointment deadline, turnover < AED 50m
+- 1 July 2027 — reporting begins for remaining businesses
+
+Verify these against the Ministry of Finance before relying on them.
+
+## Worked examples that distinguish the product
+
+- **Profit margin scheme**: a used car bought for AED 56,000 and sold for
+  AED 60,000 has a margin of AED 4,000. VAT is 5/105 of that margin =
+  AED 190.48, not 5% of 60,000. Charging the full rate overcharges the
+  buyer by AED 2,809 per vehicle.
+- **Designated Zones**: selling into a Designated Zone is not an export;
+  the company there is a UAE company and the supply is standard rated.
+  The rule covers goods, not services.
+- **Excise tax**: computed on the published retail price, not on cost or
+  selling price. 1,000 energy drinks at a published price of AED 12 at
+  100% = AED 12,000 due, less deductions for re-exports.
+- **Manufacturing**: a run of 20 chairs yielding 18 divides the whole run
+  cost by 18, not by 20. Dividing by the planned quantity undervalues
+  stock and overstates margin on every later sale.
+- **Post-dated cheques**: a cheque settles the invoice on the day it is
+  handed over while the bank balance moves only when it clears, so the
+  customer is not chased and the money is not spent early.
+
+## Integrity checks built into the product
+
+Four figures whose only acceptable value is zero, computed against the
+customer's own data: tenant isolation violations, stock value versus the
+Inventory ledger account, customer and supplier balances versus their
+control accounts, and unbalanced journal entries.
+
+## Pages
+
+- [Home, Arabic](https://faktra.ae/ar/): product overview, modules, sectors
+- [Home, English](https://faktra.ae/en/): same in English
+- [Documentation, Arabic](https://faktra.ae/ar/docs.html): every module
+  explained with a worked numeric example
+- [Documentation, English](https://faktra.ae/en/docs.html)
+- [Pricing, Arabic](https://faktra.ae/ar/pricing.html): plans and a
+  feature comparison table
+- [Pricing, English](https://faktra.ae/en/pricing.html)
+- [Machine-readable pricing](https://faktra.ae/pricing.md)
+
+## Contact
+
+hello@faktra.ae
