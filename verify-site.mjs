@@ -165,6 +165,27 @@ for (const [lang, file] of pages) {
   });
   check('كل الروابط الداخلية تصل', bad.length === 0, bad.join(' · '));
 
+  /* ---- التجاوب ----
+   *
+   * الخطأ الذي جعل الهاتف يعرض عمودين متلاصقين لم يكن في استعلام
+   * الوسائط: الاستعلام كان مكتوبًا وصحيحًا، لكن الشبكة كانت
+   * معرّفة داخل السمة `style` على العنصر نفسه، والسمة تسبق كل
+   * قاعدة في ملف التنسيق. فالفحص هنا على المصدر لا على القاعدة.
+   */
+  const inlineGrid = [...document.querySelectorAll('[style*="grid-template-columns"]')]
+    .map((el) => el.getAttribute('style'));
+  check('لا شبكة أعمدة داخل سمة style', inlineGrid.length === 0,
+    inlineGrid.slice(0, 2).join(' · '));
+
+  // ‎max-width‎ هي الشكل المتجاوب لا المشكلة؛ المقصود ‎width‎ وحدها
+  const inlineWidth = [...document.querySelectorAll('[style*="width:"]')]
+    .map((el) => el.getAttribute('style'))
+    .filter((s) => /(^|[;\s])width:\s*\d{3,}px/.test(s));
+  check('لا عرض ثابت بالبكسل داخل سمة style', inlineWidth.length === 0,
+    inlineWidth.slice(0, 2).join(' · '));
+
+  check('يوجد زر قائمة للهاتف', Boolean(document.querySelector('.burger')));
+
   // ---- الظهور دون IntersectionObserver ----
   const hidden = [...document.querySelectorAll('.reveal')]
     .filter((el) => !el.classList.contains('in')).length;
@@ -208,6 +229,23 @@ for (const bot of ['GPTBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended', 'B
   check(`${bot} مسموح له`, allowed);
 }
 check('robots يشير إلى sitemap', robots.includes('Sitemap: https://faktra.ae/sitemap.xml'));
+
+/* ---- طبقة الهاتف في ملف التنسيق ---- */
+const css = readFileSync(resolve(here, 'site.css'), 'utf8');
+for (const [what, re] of [
+  ['نقطة كسر للهاتف', /@media \(max-width: 720px\)/],
+  ['الأعمدة تنهار على الشاشة الضيقة', /\.split[^{]*\{[^}]*grid-template-columns: 1fr/],
+  ['الطفو يتوقف على الهاتف', /\.float \{ animation: none/],
+  ['الجداول العريضة تُمرَّر لا تدفع الصفحة', /overflow-x: auto/],
+  ['احترام تقليل الحركة', /prefers-reduced-motion/],
+]) check(what, re.test(css));
+
+const js = readFileSync(resolve(here, 'site.js'), 'utf8');
+for (const [what, re] of [
+  ['القائمة تُغلق بمفتاح الهروب', /Escape/],
+  ['والضغط خارجها', /links\.contains\(e\.target\)/],
+  ['والصفحة لا تنزلق خلفها', /body\.style\.overflow/],
+]) check(what, re.test(js));
 
 const sm = readFileSync(resolve(here, 'sitemap.xml'), 'utf8');
 const locs = (sm.match(/<loc>/g) || []).length;

@@ -297,13 +297,41 @@ footer a:hover { color: #fff; }
 .foot-end { margin-top: 44px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1);
   display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13px; }
 
+/* ---------- الأقسام ذات العمودين ---------- */
+
+/*
+ * These were written as `style="display:grid;grid-template-columns:
+ * 1.05fr .95fr"` on the section itself, which is why the phone
+ * layout never collapsed: an inline style outranks every rule in
+ * this file, so the media query below was being written and ignored.
+ * The ratios live here now, where a narrow screen can override them.
+ */
+.split      { display: grid; gap: 56px; align-items: center;
+              grid-template-columns: 1.05fr .95fr; }
+.split-alt  { display: grid; gap: 48px; align-items: center;
+              grid-template-columns: .9fr 1.1fr; }
+.split-even { display: grid; gap: 52px; align-items: center;
+              grid-template-columns: 1fr 1fr; }
+
 /* ---------- الموبايل ---------- */
+
+@media (max-width: 1000px) {
+  .split, .split-alt, .split-even { gap: 40px; }
+}
 
 @media (max-width: 940px) {
   .g4 { grid-template-columns: repeat(2, 1fr); }
   .g3 { grid-template-columns: repeat(2, 1fr); }
   .foot-grid { grid-template-columns: 1fr 1fr; }
 }
+
+@media (max-width: 860px) {
+  /* عمود واحد قبل أن يضيق العمودان على النص لا بعده */
+  .split, .split-alt, .split-even { grid-template-columns: 1fr; gap: 36px; }
+  /* الصورة تحت النص دائمًا، مهما كان ترتيبها في الشيفرة */
+  .split-alt > :first-child { order: 2; }
+}
+
 @media (max-width: 720px) {
   section { padding: 64px 0; }
   .nav-links { display: none; position: fixed; inset: var(--nav-h) 0 auto;
@@ -315,5 +343,40 @@ footer a:hover { color: #fff; }
   .burger { display: block; }
   .g2, .g3, .g4 { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; gap: 26px; }
-  .sat { grid-template-columns: 1fr; }
+  .sat { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .sat > div { padding: 10px 11px; }
+  .sat .v { font-size: 17px; }
+  .sat .l { font-size: 10.5px; }
+
+  /* الشريط العلوي: ثلاثة عناصر ومساحة تكفي عنصرين */
+  .nav-in { gap: 12px; }
+  .nav-act { gap: 7px; margin-inline-start: auto; }
+  .brand { font-size: 17px; }
+  .brand svg { width: 26px; height: 26px; }
+  .btn { padding: 11px 18px; font-size: 14px; }
+  .btn-lg { padding: 14px 22px; font-size: 15px; }
+
+  /*
+   * الطفو يتوقف على الهاتف.
+   *
+   * ليست مسألة ذوق: حركة لا تنتهي تُبقي المتصفح يعيد الرسم طوال
+   * وجود الصفحة، فتستهلك البطارية وتُتعب التمرير على جهاز متوسط.
+   */
+  .float { animation: none; }
+
+  /* مسافة الانزلاق أقصر — ٢٢ بكسل على شاشة قصيرة قفزة لا ظهور */
+  .js .reveal { transform: translateY(12px); }
+  .js .reveal.d3, .js .reveal.d4,
+  .js .reveal.d5, .js .reveal.d6 { transition-delay: .12s; }
+
+  /* الجداول العريضة تُمرَّر بدل أن تدفع الصفحة كلها جانبًا */
+  .ex table, .cmp { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 420px) {
+  /* زر «اطلب عرضًا» يزاحم الشعار على أضيق الشاشات، والرابط نفسه
+     متاح في القائمة وفي نهاية الصفحة */
+  .nav-act .btn-primary { display: none; }
+  .shell { width: calc(100% - 28px); }
+  h1 { letter-spacing: -.02em; }
 }

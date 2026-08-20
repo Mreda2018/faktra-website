@@ -81,16 +81,51 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
+  /* ----------------------------------------------------------
+     قائمة الهاتف
+
+     كانت تُفتح ولا تُغلق إلا باختيار رابط منها: الضغط خارجها لا
+     يفعل شيئًا، ومفتاح الهروب لا يفعل شيئًا، والصفحة تنزلق خلفها
+     وهي مفتوحة فيبدو الأمر عطلًا لا قائمة. وإذا دار الجهاز إلى
+     الوضع الأفقي بقيت الصفة `open` على عنصر عاد إلى شكل سطح
+     المكتب.
+     ---------------------------------------------------------- */
+
   var burger = document.querySelector('.burger');
   var links = document.querySelector('.nav-links');
   if (burger && links) {
-    burger.addEventListener('click', function () {
-      var open = links.classList.toggle('open');
+    var setMenu = function (open) {
+      links.classList.toggle('open', open);
       burger.setAttribute('aria-expanded', String(open));
+      // تثبيت الصفحة خلف القائمة، وإلا انزلق ما تحتها تحت الإصبع
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    burger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setMenu(!links.classList.contains('open'));
     });
+
     links.addEventListener('click', function (e) {
-      if (e.target.closest('a')) links.classList.remove('open');
+      if (e.target.closest('a')) setMenu(false);
     });
+
+    document.addEventListener('click', function (e) {
+      if (!links.classList.contains('open')) return;
+      if (!links.contains(e.target) && e.target !== burger) setMenu(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setMenu(false);
+    });
+
+    // العودة إلى عرض سطح المكتب تُنهي حالة القائمة، ومعها قفل التمرير
+    if (window.matchMedia) {
+      var wide = window.matchMedia('(min-width: 721px)');
+      var onWide = function (m) { if (m.matches) setMenu(false); };
+      if (wide.addEventListener) wide.addEventListener('change', onWide);
+      else if (wide.addListener) wide.addListener(onWide);
+    }
   }
 
   /* ----------------------------------------------------------
