@@ -3,7 +3,7 @@
 E-invoicing and accounting software for the United Arab Emirates and
 Egypt. Prices are quoted per market: UAE dirhams (AED) for the UAE,
 Egyptian pounds (EGP) for Egypt, both excluding VAT. Last updated:
-2026-09-11.
+2026-09-12.
 
 Every plan includes a 14-day free trial with no payment card.
 Annual billing is charged at ten months' price — two months free.
@@ -61,8 +61,14 @@ hello@faktra.ae for a quote.
 
 Trading, retail, restaurants, online stores, import/export, advertising
 and printing, contracting, professional services, manufacturing,
-maintenance and hire, and pharmacies (batches, expiry, till, per-item tax
-category).
+maintenance and hire, pharmacies (batches, expiry, till, per-item tax
+category), and hotels.
+
+Hotels: rooms sold by type with the room assigned at check-in, a rate
+calendar priced per night, a guest folio closing into one invoice at
+departure, and statutory fees that may be a fixed amount per room per
+night with a night cap, or a percentage of a named base. Rates are
+configured per property, not shipped.
 
 Clinics and medical centres: invoicing, accounting and payroll are
 covered. Input-tax apportionment for exempt healthcare supplies is not

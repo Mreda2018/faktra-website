@@ -7,7 +7,7 @@
 > seals and submits the Egyptian Tax Authority e-invoice and e-receipt,
 > and computes VAT at 14%. Both markets share accounting, stock,
 > purchasing, collections, payroll and twelve sector modules. Available in
-> Arabic and English. Last updated: 2026-09-11.
+> Arabic and English. Last updated: 2026-09-12.
 
 Faktra is a multi-tenant web application. It is **not** an accredited
 service provider (ASP). In the UAE it produces and validates the PINT AE
@@ -94,14 +94,43 @@ Verify these against the Ministry of Finance before relying on them.
 
 Trading and distribution, retail, restaurants and cafés, online stores,
 import and export, advertising and printing, contracting, professional
-services, manufacturing and workshops, maintenance and hire, and
-**pharmacies**.
+services, manufacturing and workshops, maintenance and hire, **hotels**
+and **pharmacies**.
 
 **Clinics and medical centres** are served for invoicing, accounting and
 payroll, with one stated limit: healthcare supplies are largely exempt,
 and Faktra does **not** compute an input-tax apportionment ratio from the
 exempt/taxable revenue mix. Recoverable tax is recorded per purchase
 invoice and set by the accountant. This is disclosed rather than implied.
+
+## Hotels
+
+Rooms are sold by **type**, with the specific room assigned at check-in;
+availability is therefore a count per night, not a list of free units, and
+it is enforced by a database trigger rather than a form check. The night
+is the unit and each night is priced from a rate calendar, so a stay
+crossing a season or a weekend is not nights × one rate. Charges
+accumulate on a guest folio and close into **one invoice** at departure.
+
+The statutory fees are the reason the module exists, because neither
+market's fees are what the rest of the system could express:
+
+- **A fixed amount per room per night**, with a cap in nights. A stay
+  longer than the cap pays the cap. This cannot be modelled as a
+  percentage or as a catalogue line.
+- **A percentage of an explicitly named base** — the room alone, or the
+  room plus the fees already applied — with an explicit sequence, because
+  "12% service and 1% municipality" is ambiguous in the only way that
+  changes the total.
+
+A levy collected on a government's behalf is **not** hotel revenue and is
+kept out of the standard-rated base. Entering it as a catalogue item — the
+only option before this module — makes the VAT return overstate output tax
+every month on bills that look ordinary.
+
+No rates are written into the system. They differ by emirate, governorate
+and hotel classification and change by decree, so they are configured per
+property and confirmed by the hotel.
 
 ## Integrity checks built into the product
 

@@ -160,6 +160,7 @@
       <a href="#purchasing">Purchasing &amp; shipping</a>
       <a href="#manufacturing">Manufacturing</a>
       <a href="#pos">Point of sale</a>
+      <a href="#hotel">Hotels</a>
       <a href="#fleet">Fleet &amp; delivery</a>
 
       <h6>People &amp; projects</h6>
@@ -682,6 +683,58 @@
         <li>
           Service charge and order type: dine-in, takeaway, delivery</li>
       </ul>
+    </section>
+
+    <section id="hotel">
+      <h2>Hotels</h2>
+      <p>
+        A room is sold as a type, not as a specific door — the door is
+        chosen at check-in — and the night is the unit. A guest's charges
+        accumulate on their folio for the whole stay and close into
+        <strong>one invoice</strong> at departure, not one per charge.</p>
+
+      <h3>Statutory fees — the reason this module exists</h3>
+      <p>
+        Every other charge in this system is a <strong>percentage</strong>
+        of a line. Hotel fees are not, in either market:</p>
+      <ul>
+        <li><strong>A fixed amount per room per night</strong>, capped at a
+          number of nights. A forty-five night stay pays for thirty, and
+          the difference does not surface as an error — it surfaces as an
+          overcharge.</li>
+        <li><strong>A percentage of a named base</strong>: the room alone,
+          or the room plus the fees before it. "Twelve percent service and
+          one percent municipality" is ambiguous in the only way that
+          costs money, so the base is written on the fee and the order is
+          a number rather than the order of rows.</li>
+      </ul>
+
+      <div class="ex">
+        <div class="ex-h">Example — two nights, cascading fees</div>
+        <table>
+          <tbody><tr><td>Two nights × 1,000</td><td>2,000.00</td></tr>
+          <tr><td>Service charge 12% of the room</td><td>240.00</td></tr>
+          <tr><td>Municipality 1% of room plus service</td><td>22.40</td></tr>
+          <tr class="tot"><td>Before VAT</td><td>2,262.40</td></tr>
+        </tbody></table>
+        <p class="note">
+          Computed on the room alone, the municipality fee would be 20.00
+          rather than 22.40. Two units on one bill; a year on a ledger.</p>
+      </div>
+
+      <div class="warn-box">
+        <strong>Important to be clear about:</strong>
+        A levy collected for a government is not the hotel's revenue, so it
+        stays out of the standard-rated base. Entering it as a catalogue
+        item — the only thing this system could do before this module —
+        makes the VAT return overstate output tax every month, on bills
+        that look entirely ordinary.
+      </div>
+
+      <p class="note">
+        No rates or amounts are written into the system: they differ by
+        emirate, by governorate and by hotel classification, and they change
+        by decree. They are set per property and confirmed by the hotel.</p>
     </section>
 
     <section id="fleet">
