@@ -57,6 +57,17 @@ Manufacturing work orders, service contracts, equipment hire, sales
 commission and lead pipeline are available on request. Contact
 hello@faktra.ae for a quote.
 
+## Sectors
+
+Trading, retail, restaurants, online stores, import/export, advertising
+and printing, contracting, professional services, manufacturing,
+maintenance and hire, and pharmacies (batches, expiry, till, per-item tax
+category).
+
+Clinics and medical centres: invoicing, accounting and payroll are
+covered. Input-tax apportionment for exempt healthcare supplies is not
+computed — recoverable tax is entered per purchase invoice.
+
 ## Notes for evaluation
 
 - Faktra is **not** an accredited service provider for UAE e-invoicing.

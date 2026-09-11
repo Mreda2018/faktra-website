@@ -211,6 +211,112 @@
   apply();
 
   /* ----------------------------------------------------------
+     طلب العرض
+
+     لا خادم خلف هذا الموقع، فالنموذج لا «يُرسَل» — يبني رسالة
+     واتساب ويفتحها، والزائر يقرؤها ويضغط إرسال بنفسه. وهذا أصدق
+     من نموذج يقول «تم الإرسال» ثم لا يصل شيئًا إلى أحد، وهو ما
+     يفعله كل نموذج بلا خادم خلفه.
+
+     الرقم مكتوب مرة واحدة هنا. كان مكتوبًا في صفحتين بصيغة
+     ‎971500000000‎ — رقم لا وجود له — فكان كل زائر ضغط الزر طوال
+     هذه المدة يصل إلى لا شيء، ولا شيء في الموقع يبدو معطلًا.
+     ---------------------------------------------------------- */
+
+  // بالصيغة الدولية بلا صفر ولا علامة زائد: هكذا يقبلها ‎wa.me‎.
+  // ‎01050020785‎ محليًا هي ‎20‎ + ‎1050020785‎.
+  var WHATSAPP = '201050020785';
+
+  var form = document.querySelector('[data-demo-form]');
+  if (form) {
+    var errBox = form.querySelector('[data-req-err]');
+    var ar = document.documentElement.lang === 'ar';
+
+    var val = function (name) {
+      var el = form.elements[name];
+      return el ? String(el.value || '').trim() : '';
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // الاسم والشركة وحدهما مطلوبان: كل حقل إضافي إجباري هو سبب
+      // آخر لأن يغلق الزائر الصفحة.
+      var missing = [];
+      if (!val('name')) missing.push(ar ? 'الاسم' : 'your name');
+      if (!val('company')) missing.push(ar ? 'الشركة' : 'company');
+      if (missing.length) {
+        // الفاصلة عربية في العربية ولاتينية في الإنجليزية
+        errBox.textContent = (ar ? 'ناقص: ' : 'Missing: ')
+          + missing.join(ar ? '، ' : ', ');
+        var first = val('name') ? form.elements.company : form.elements.name;
+        if (first && first.focus) first.focus();
+        return;
+      }
+      errBox.textContent = '';
+
+      var country = body.getAttribute('data-country') === 'EG'
+        ? (ar ? 'مصر' : 'Egypt') : (ar ? 'الإمارات' : 'UAE');
+
+      // سطر لكل معلومة، والفارغ يُحذف — لا سطر بعنوان بلا قيمة
+      var lines = ar ? [
+        'السلام عليكم، أودّ طلب عرض على فكترة.',
+        '',
+        'الاسم: ' + val('name'),
+        'الشركة: ' + val('company'),
+        val('phone') ? 'الهاتف: ' + val('phone') : '',
+        'النشاط: ' + val('sector'),
+        'البلد: ' + country,
+        'الخطة: ' + val('plan'),
+        val('note') ? 'ملاحظة: ' + val('note') : '',
+      ] : [
+        'Hello, I would like a demo of Faktra.',
+        '',
+        'Name: ' + val('name'),
+        'Company: ' + val('company'),
+        val('phone') ? 'Phone: ' + val('phone') : '',
+        'Sector: ' + val('sector'),
+        'Country: ' + country,
+        'Plan: ' + val('plan'),
+        val('note') ? 'Note: ' + val('note') : '',
+      ];
+
+      var text = lines.filter(function (l, i) { return l !== '' || i === 1; }).join('\n');
+      window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(text),
+        '_blank', 'noopener');
+    });
+
+    /* زر البريد يحمل الرسالة نفسها.
+       لو حمل «طلب عرض» فارغًا، لضاع كل ما كتبه الزائر في اللحظة
+       التي اختار فيها البريد بدل واتساب — وهو اختيار لا يُفترض أن
+       يكلّفه إعادة الكتابة. */
+    var mail = form.querySelector('[data-demo-mail]');
+    if (mail) {
+      mail.addEventListener('click', function () {
+        var subject = ar ? 'طلب عرض — ' + (val('company') || 'فكترة')
+          : 'Faktra demo — ' + (val('company') || 'request');
+        var b = [
+          val('name') && (ar ? 'الاسم: ' : 'Name: ') + val('name'),
+          val('company') && (ar ? 'الشركة: ' : 'Company: ') + val('company'),
+          val('phone') && (ar ? 'الهاتف: ' : 'Phone: ') + val('phone'),
+          (ar ? 'النشاط: ' : 'Sector: ') + val('sector'),
+          (ar ? 'الخطة: ' : 'Plan: ') + val('plan'),
+          val('note') && (ar ? 'ملاحظة: ' : 'Note: ') + val('note'),
+        ].filter(Boolean).join('\n');
+        mail.setAttribute('href', 'mailto:hello@faktra.ae?subject='
+          + encodeURIComponent(subject) + '&body=' + encodeURIComponent(b));
+      });
+    }
+  }
+
+  // وأي رابط واتساب آخر في الصفحة يأخذ الرقم من المتغيّر نفسه،
+  // فلا يبقى رقم قديم في زاوية لا يفتحها أحد.
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(function (a) {
+    a.setAttribute('href',
+      a.getAttribute('href').replace(/wa\.me\/\d+/, 'wa.me/' + WHATSAPP));
+  });
+
+  /* ----------------------------------------------------------
      قائمة الوثائق الجانبية: إبراز القسم المعروض
      ---------------------------------------------------------- */
 

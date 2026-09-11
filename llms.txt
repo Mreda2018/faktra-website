@@ -90,6 +90,19 @@ Verify these against the Ministry of Finance before relying on them.
   handed over while the bank balance moves only when it clears, so the
   customer is not chased and the money is not spent early.
 
+## Sectors served
+
+Trading and distribution, retail, restaurants and cafés, online stores,
+import and export, advertising and printing, contracting, professional
+services, manufacturing and workshops, maintenance and hire, and
+**pharmacies**.
+
+**Clinics and medical centres** are served for invoicing, accounting and
+payroll, with one stated limit: healthcare supplies are largely exempt,
+and Faktra does **not** compute an input-tax apportionment ratio from the
+exempt/taxable revenue mix. Recoverable tax is recorded per purchase
+invoice and set by the accountant. This is disclosed rather than implied.
+
 ## Integrity checks built into the product
 
 Four figures whose only acceptable value is zero, computed against the

@@ -330,14 +330,40 @@
           know the margin scheme overcharges the buyer by 2,810 on every car.</p>
       </div>
 
-      <div class="card hover reveal d2">
+      <div class="card hover reveal d2" data-only="AE">
         <div class="ico" style="background:var(--warn-wash);color:var(--warn)">
           <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"></circle></svg>
         </div>
-        <h4 data-only="AE">
-          A free-zone sale treated as an export</h4>
+        <h4>A free-zone sale treated as an export</h4>
         <p style="font-size:14.5px">
-          <span data-only="AE">Selling into a Designated Zone is not an export, and the rule treats goods and services differently. Faktra knows the four rules, reviews every invoice against them, and tells you when one disagrees.</span></p>
+          Selling into a Designated Zone is not an export, and the rule treats
+          goods and services differently. Faktra knows the four rules, reviews
+          every invoice against them, and tells you when one disagrees.</p>
+      </div>
+
+      <div class="card hover reveal" data-only="EG">
+        <div class="ico" style="background:var(--neg-wash);color:var(--neg)">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </div>
+        <h4>A correct number in a rejected document</h4>
+        <p style="font-size:14.5px">
+          The authority verifies the seal against a string, character by
+          character, not against the meaning. A rate written
+          <span dir="ltr">14.00</span> and emitted as <span dir="ltr">14</span>
+          is the same value and an invalid document — and the message says
+          "invalid signature", not "two decimals missing".</p>
+      </div>
+
+      <div class="card hover reveal d2" data-only="EG">
+        <div class="ico" style="background:var(--warn-wash);color:var(--warn)">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"></circle></svg>
+        </div>
+        <h4>One seal per receipt stalls the till</h4>
+        <p style="font-size:14.5px">
+          E-receipts are submitted in batches, and a single seal covers the
+          whole batch. A system that treats a receipt as a small invoice signs
+          four hundred times a day against one hardware token — the queue
+          stops, submission gets deferred, and then it piles up.</p>
       </div>
 
       <div class="card hover reveal d3">
@@ -447,6 +473,16 @@
     </div>
 
     <div class="grid g4">
+      <div class="card hover reveal" style="padding:20px">
+        <h4 style="margin-bottom:6px">Pharmacies</h4>
+        <p style="font-size:13.5px;margin:0;color:var(--muted)">
+          Batches, expiry, till, tax category per item</p>
+      </div>
+      <div class="card hover reveal d1" style="padding:20px">
+        <h4 style="margin-bottom:6px">Clinics</h4>
+        <p style="font-size:13.5px;margin:0;color:var(--muted)">
+          Service invoicing, ledger, payroll — input tax set by hand</p>
+      </div>
       <div class="card hover reveal" style="padding:20px">
         <h4 style="margin-bottom:6px">Trading</h4>
         <p style="font-size:13.5px;margin:0;color:var(--muted)">
@@ -625,16 +661,74 @@
       Half an hour, walking one full cycle from quotation to invoice
         to collection to report — with your figures, not demo ones.</p>
 
-    <div class="reveal d3" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <!-- ⬇⬇ غيّر الرقم ده لرقم واتساب بتاعك ⬇⬇ -->
-      <a class="btn btn-primary btn-lg" href="https://wa.me/971500000000?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D8%A7%D9%88%D8%B2%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%A3%D9%83%D8%AA%D8%B1%20%D8%B9%D9%86%20%D9%81%D9%83%D8%AA%D8%B1%D8%A9" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3z"></path><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"></path></svg>
-        Message me on WhatsApp
-      </a>
-      <a class="btn btn-ghost btn-lg" href="mailto:hello@faktra.ae?subject=Faktra%20demo">
-        Send an email
-      </a>
-    </div>
+    <form class="req reveal d3" data-demo-form="" novalidate>
+      <div>
+        <label for="rqName">Your name</label>
+        <input id="rqName" name="name" autocomplete="name" required>
+      </div>
+      <div>
+        <label for="rqCompany">Company</label>
+        <input id="rqCompany" name="company" autocomplete="organization" required>
+      </div>
+      <div>
+        <label for="rqPhone">Phone</label>
+        <input id="rqPhone" name="phone" type="tel" dir="ltr" autocomplete="tel">
+      </div>
+      <div>
+        <label for="rqSector">What you do</label>
+        <select id="rqSector" name="sector">
+          <option>Trading and distribution</option>
+          <option>Retail</option>
+          <option>Pharmacy</option>
+          <option>Clinic or medical centre</option>
+          <option>Restaurants and cafés</option>
+          <option>Manufacturing and workshops</option>
+          <option>Contracting</option>
+          <option>Import and export</option>
+          <option>Advertising and printing</option>
+          <option>Professional services</option>
+          <option>Something else</option>
+        </select>
+      </div>
+
+      <div class="wide">
+        <label>Which plan interests you</label>
+        <div class="plans">
+          <label><input type="radio" name="plan" value="Starter" checked>
+            <span><b>Starter</b>
+              <i data-only="AE">199 AED</i><i data-only="EG">899 EGP</i></span></label>
+          <label><input type="radio" name="plan" value="Business">
+            <span><b>Business</b>
+              <i data-only="AE">499 AED</i><i data-only="EG">1,999 EGP</i></span></label>
+          <label><input type="radio" name="plan" value="Professional">
+            <span><b>Professional</b>
+              <i data-only="AE">899 AED</i><i data-only="EG">3,999 EGP</i></span></label>
+        </div>
+      </div>
+
+      <div class="wide">
+        <label for="rqNote">Anything we should know? <span class="muted">(optional)</span></label>
+        <textarea id="rqNote" name="note" rows="2"
+          placeholder="Branches, current system, any question…"></textarea>
+      </div>
+
+      <div class="wide req-err" data-req-err="" role="alert"></div>
+
+      <div class="wide" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <button class="btn btn-primary btn-lg" type="submit">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.5.7.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3z"></path><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"></path></svg>
+          Send the request on WhatsApp</button>
+        <a class="btn btn-ghost btn-lg" data-demo-mail=""
+           href="mailto:hello@faktra.ae?subject=Faktra%20demo">
+          Or by email</a>
+      </div>
+
+      <p class="wide muted" style="font-size:12.5px;text-align:center;margin:0">
+        The button opens WhatsApp with a message written from the fields above —
+        you can read and edit it before sending. Nothing is sent until you
+        press send yourself.
+      </p>
+    </form>
 
     <p class="reveal d4" style="font-size:13.5px;color:var(--muted);margin-top:26px">
       <span data-only="AE">Faktra is not an accredited service provider. You appoint yours and the system connects to it.</span>
