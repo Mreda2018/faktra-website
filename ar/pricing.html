@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>أسعار فكترة — الخطط والاشتراكات بالدرهم الإماراتي</title>
-<meta name="description" content="ثلاث خطط: المبتدئة ١٩٩ درهمًا، والأعمال ٤٩٩، والاحترافية ٨٩٩ شهريًا. تجربة مجانية أربعة عشر يومًا دون بطاقة ائتمان، وخصم شهرين على الاشتراك السنوي.">
+<title>أسعار فكترة — الخطط والاشتراكات في الإمارات ومصر</title>
+<meta name="description" content="الإمارات: المبتدئة ١٩٩ درهمًا، والأعمال ٤٩٩، والاحترافية ٨٩٩ شهريًا. مصر: ٨٩٩ جنيهًا، و١٩٩٩، و٣٩٩٩ شهريًا. تجربة مجانية أربعة عشر يومًا دون بطاقة ائتمان، وخصم شهرين على الاشتراك السنوي.">
 
 <link rel="canonical" href="https://faktra.ae/ar/pricing.html">
 <link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/pricing.html">
@@ -13,8 +13,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="ar_AE">
 <meta property="og:site_name" content="فكترة">
-<meta property="og:title" content="أسعار فكترة — الخطط والاشتراكات بالدرهم الإماراتي">
-<meta property="og:description" content="ثلاث خطط: المبتدئة ١٩٩ درهمًا، والأعمال ٤٩٩، والاحترافية ٨٩٩ شهريًا. تجربة مجانية أربعة عشر يومًا دون بطاقة ائتمان، وخصم شهرين على الاشتراك السنوي.">
+<meta property="og:title" content="أسعار فكترة — الخطط والاشتراكات في الإمارات ومصر">
+<meta property="og:description" content="الإمارات: المبتدئة ١٩٩ درهمًا، والأعمال ٤٩٩، والاحترافية ٨٩٩ شهريًا. مصر: ٨٩٩ جنيهًا، و١٩٩٩، و٣٩٩٩ شهريًا. تجربة مجانية أربعة عشر يومًا دون بطاقة ائتمان، وخصم شهرين على الاشتراك السنوي.">
 <meta property="og:url" content="https://faktra.ae/ar/pricing.html">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -96,7 +96,7 @@
   }
 </style>
 </head>
-<body data-billing="monthly">
+<body data-billing="monthly" data-country="AE">
 
 <nav class="nav">
   <div class="shell nav-in">
@@ -116,6 +116,10 @@
       <a href="./pricing.html" class="on">الأسعار</a>
     </div>
     <div class="nav-act">
+      <div class="ctry" data-country-switch="" role="group" aria-label="البلد">
+        <button type="button" data-country-to="AE" aria-pressed="true">الإمارات</button>
+        <button type="button" data-country-to="EG" aria-pressed="false">مصر</button>
+      </div>
       <a class="lang" href="../en/pricing.html" hreflang="en" lang="en">EN</a>
       <a class="btn btn-primary" href="./index.html#contact">
         اطلب عرض</a>
@@ -133,7 +137,7 @@
       ادفع مقابل ما تستخدمه
       </h1>
     <p class="lead reveal d2" style="margin:0 auto 30px">
-      كل الأسعار بالدرهم الإماراتي وشاملة كل المزايا داخل الخطة.
+      <span data-only="AE">كل الأسعار بالدرهم الإماراتي</span><span data-only="EG">كل الأسعار بالجنيه المصري</span> وشاملة كل المزايا داخل الخطة.
         لا يوجد رسوم إعداد ولا رسوم مخفية.
       </p>
 
@@ -155,12 +159,14 @@
       <div class="card plan reveal">
         <div class="pill">المبتدئة</div>
         <div class="price">
-          <span class="amt" data-price="" data-monthly="199" data-yearly="1,990">199</span>
+          <span class="amt" data-price=""
+                data-ae-monthly="199" data-ae-yearly="1,990"
+                data-eg-monthly="899" data-eg-yearly="8,990">199</span>
           <span style="color:var(--muted);font-size:14px">
             <span data-period-label="" data-show="monthly">
-              درهم / شهر</span>
+              <span data-cur="" data-ae="درهم" data-eg="جنيه">درهم</span> / شهر</span>
             <span data-period-label="" data-show="yearly">
-              درهم / سنة</span>
+              <span data-cur="" data-ae="درهم" data-eg="جنيه">درهم</span> / سنة</span>
           </span>
         </div>
         <p style="font-size:14.5px;color:var(--muted);margin-bottom:0">
@@ -172,8 +178,7 @@
             <span>فواتير وعروض أسعار بالعربي والإنجليزي
               </span></li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            <span>توليد وأرشفة XML بمعيار PINT AE
-              </span></li>
+            <span><span data-only="AE">توليد وأرشفة XML بمعيار PINT AE</span><span data-only="EG">مستند المصلحة والإيصال الإلكتروني، مختومًا ومؤرشفًا</span></span></li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             <span>إقرار ضريبة القيمة المضافة
               </span></li>
@@ -195,12 +200,14 @@
         <div class="pill" style="background:var(--indigo);color:#fff">
           الأعمال — الأكثر طلباً</div>
         <div class="price">
-          <span class="amt" data-price="" data-monthly="499" data-yearly="4,990">499</span>
+          <span class="amt" data-price=""
+                data-ae-monthly="499" data-ae-yearly="4,990"
+                data-eg-monthly="1,999" data-eg-yearly="19,990">499</span>
           <span style="color:var(--muted);font-size:14px">
             <span data-period-label="" data-show="monthly">
-              درهم / شهر</span>
+              <span data-cur="" data-ae="درهم" data-eg="جنيه">درهم</span> / شهر</span>
             <span data-period-label="" data-show="yearly">
-              درهم / سنة</span>
+              <span data-cur="" data-ae="درهم" data-eg="جنيه">درهم</span> / سنة</span>
           </span>
         </div>
         <p style="font-size:14.5px;color:var(--muted);margin-bottom:0">
@@ -237,12 +244,14 @@
       <div class="card plan reveal d2">
         <div class="pill">الاحترافية</div>
         <div class="price">
-          <span class="amt" data-price="" data-monthly="899" data-yearly="8,990">899</span>
+          <span class="amt" data-price=""
+                data-ae-monthly="899" data-ae-yearly="8,990"
+                data-eg-monthly="3,999" data-eg-yearly="39,990">899</span>
           <span style="color:var(--muted);font-size:14px">
             <span data-period-label="" data-show="monthly">
-              درهم / شهر</span>
+              <span data-cur="" data-ae="درهم" data-eg="جنيه">درهم</span> / شهر</span>
             <span data-period-label="" data-show="yearly">
-              درهم / سنة</span>
+              <span data-cur="" data-ae="درهم" data-eg="جنيه">درهم</span> / سنة</span>
           </span>
         </div>
         <p style="font-size:14.5px;color:var(--muted);margin-bottom:0">
@@ -306,8 +315,7 @@
           <tr><td>عروض أسعار وفواتير متكررة
             </td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>XML بمعيار PINT AE وأرشيف
-            </td>
+          <tr><td><span data-only="AE">XML بمعيار PINT AE وأرشيف</span><span data-only="EG">مستند المصلحة والإيصال الإلكتروني وأرشيف</span></td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
           <tr><td>فاتورة مبسّطة وإيصال حراري
             </td>
@@ -316,13 +324,11 @@
           <tr class="grp"><td colspan="4">الضرائب</td></tr>
           <tr><td>إقرار ضريبة القيمة المضافة</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>المناطق الحرة المعيّنة ومراجعتها
-            </td>
+          <tr data-only="AE"><td>المناطق الحرة المعيّنة ومراجعتها</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>نظام هامش الربح</td>
+          <tr data-only="AE"><td>نظام هامش الربح</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>الضريبة الانتقائية وإقرارها
-            </td>
+          <tr data-only="AE"><td>الضريبة الانتقائية وإقرارها</td>
             <td class="c no">—</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
           <tr><td>ضريبة الشركات</td>
             <td class="c no">—</td><td class="c best no">—</td><td class="c yes">✓</td></tr>
@@ -389,14 +395,21 @@
     </div>
 
     <div class="faq reveal d1">
-      <details open="">
-        <summary>هل فكترة مزوّد خدمة معتمد للفوترة الإلكترونية؟
-          </summary>
+      <details open="" data-only="AE">
+        <summary>هل فكترة مزوّد خدمة معتمد للفوترة الإلكترونية؟</summary>
         <p>لا. تولّد فكترة الفاتورة بمعيار PINT AE وتتحقق منها وتؤرشفها
           وتتابع حالتها — والإرسال الرسمي إلى الهيئة يمر عبر مزوّد معتمد تعيّنه أنت،
           ويتصل به النظام. وكل من يزعم أن برنامجه وحده يرسل رسمياً دون
-          مزوّد معتمد، فاطلب منه أن يريك عقده.
-          </p>
+          مزوّد معتمد، فاطلب منه أن يريك عقده.</p>
+      </details>
+
+      <details open="" data-only="EG">
+        <summary>كيف يصل المستند إلى المصلحة في مصر؟</summary>
+        <p>لا يوجد في مصر مزوّد معتمد بين الممول والمصلحة أصلًا: الممول يرسل
+          بنفسه ببيانات اعتماد تصدرها له المصلحة، وفكترة تنفّذ هذا الإرسال نيابةً
+          عنه بتلك البيانات، وتتابع الحالة حتى القبول أو الرفض. أما الختم
+          الإلكتروني فشهادته على توكن في مكتبك، ولا يستطيع خادم في أي مكان أن
+          يلمسها — فيوقّع وكيل صغير يعمل على الجهاز نفسه.</p>
       </details>
 
       <details>
@@ -475,7 +488,7 @@
           فكترة
         </div>
         <p style="color:#98A1B2;font-size:14px;max-width:34ch">
-          نظام فوترة إلكترونية ومحاسبة للشركات في الإمارات.
+          نظام فوترة إلكترونية ومحاسبة للشركات في الإمارات ومصر.
           </p>
       </div>
       <div>
@@ -499,7 +512,7 @@
     <div class="foot-end">
       <span>© <span class="n">2026</span> فكترة. كل الحقوق محفوظة.
         </span>
-      <span>الأسعار بالدرهم الإماراتي قبل الضريبة
+      <span><span data-only="AE">الأسعار بالدرهم الإماراتي</span><span data-only="EG">الأسعار بالجنيه المصري</span> قبل الضريبة
         </span>
     </div>
   </div>

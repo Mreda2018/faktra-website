@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>فكترة — نظام الفوترة الإلكترونية والمحاسبة للشركات في الإمارات</title>
-<meta name="description" content="نظام محاسبي متكامل للشركات في الإمارات: فوترة إلكترونية بمعيار PINT AE، ضريبة القيمة المضافة، المناطق الحرة المعيّنة، المخزون، الرواتب وحماية الأجور. تجربة مجانية أربعة عشر يومًا.">
+<title>فكترة — نظام الفوترة الإلكترونية والمحاسبة للشركات في الإمارات ومصر</title>
+<meta name="description" content="نظام محاسبي متكامل للإمارات ومصر: في الإمارات فوترة بمعيار PINT AE، وفي مصر الفاتورة والإيصال الإلكتروني بصيغة مصلحة الضرائب المصرية. ضريبة القيمة المضافة، والمخزون، والرواتب. تجربة مجانية أربعة عشر يومًا.">
 
 <link rel="canonical" href="https://faktra.ae/ar/">
 <link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/">
@@ -16,8 +16,8 @@
 <meta property="og:locale" content="ar_AE">
 <meta property="og:locale:alternate" content="en_AE">
 <meta property="og:site_name" content="فكترة">
-<meta property="og:title" content="فكترة — نظام الفوترة الإلكترونية والمحاسبة للشركات في الإمارات">
-<meta property="og:description" content="فوترة إلكترونية بمعيار PINT AE، وضريبة قيمة مضافة محسوبة وفق قواعد الإمارات، ومحاسبة ومخزون ورواتب في نظام واحد.">
+<meta property="og:title" content="فكترة — نظام الفوترة الإلكترونية والمحاسبة للشركات في الإمارات ومصر">
+<meta property="og:description" content="فوترة إلكترونية بمعيار PINT AE في الإمارات، والفاتورة والإيصال الإلكتروني بصيغة المصلحة في مصر، ومحاسبة ومخزون ورواتب في نظام واحد.">
 <meta property="og:url" content="https://faktra.ae/ar/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -33,8 +33,11 @@
       "name": "فكترة",
       "alternateName": "Faktra",
       "url": "https://faktra.ae/",
-      "description": "نظام فوترة إلكترونية ومحاسبة للشركات في دولة الإمارات العربية المتحدة.",
-      "areaServed": { "@type": "Country", "name": "United Arab Emirates" },
+      "description": "نظام فوترة إلكترونية ومحاسبة للشركات في دولة الإمارات العربية المتحدة وجمهورية مصر العربية.",
+      "areaServed": [
+        { "@type": "Country", "name": "United Arab Emirates" },
+        { "@type": "Country", "name": "Egypt" }
+      ],
       "knowsLanguage": ["ar", "en"]
     },
     {
@@ -48,7 +51,9 @@
       "publisher": { "@id": "https://faktra.ae/#organization" },
       "featureList": [
         "فوترة ضريبية ثنائية اللغة برمز الاستجابة السريعة",
-        "توليد ملفات PINT AE والتحقق منها وأرشفتها",
+        "توليد ملفات PINT AE والتحقق منها وأرشفتها — الإمارات",
+        "الفاتورة الإلكترونية بصيغة مصلحة الضرائب المصرية وختمها وإرسالها ومتابعة حالتها — مصر",
+        "الإيصال الإلكتروني للبيع للمستهلك النهائي — مصر",
         "إقرار ضريبة القيمة المضافة",
         "قواعد المناطق الحرة المعيّنة",
         "نظام هامش الربح للسلع المستعملة",
@@ -64,7 +69,13 @@
         { "@type": "Offer", "name": "الأعمال", "price": "499",
           "priceCurrency": "AED", "url": "https://faktra.ae/ar/pricing.html" },
         { "@type": "Offer", "name": "الاحترافية", "price": "899",
-          "priceCurrency": "AED", "url": "https://faktra.ae/ar/pricing.html" }
+          "priceCurrency": "AED", "url": "https://faktra.ae/ar/pricing.html" },
+        { "@type": "Offer", "name": "المبتدئة — مصر", "price": "899",
+          "priceCurrency": "EGP", "url": "https://faktra.ae/ar/pricing.html" },
+        { "@type": "Offer", "name": "الأعمال — مصر", "price": "1999",
+          "priceCurrency": "EGP", "url": "https://faktra.ae/ar/pricing.html" },
+        { "@type": "Offer", "name": "الاحترافية — مصر", "price": "3999",
+          "priceCurrency": "EGP", "url": "https://faktra.ae/ar/pricing.html" }
       ]
     },
     {
@@ -84,6 +95,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "الفوترة الإلكترونية في الإمارات هي تبادل الفواتير وإبلاغ الهيئة بها في صيغة منظّمة عبر مزوّد خدمة معتمد. وفق القرارين الوزاريين 243 و244 لسنة 2025، على المنشآت التي تبلغ إيراداتها خمسين مليون درهم أو أكثر تعيين مزوّد معتمد قبل الثلاثين من أكتوبر 2026، ويبدأ الإبلاغ الإلزامي في الأول من يناير 2027."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يدعم النظام الفاتورة والإيصال الإلكتروني في مصر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم. في مصر لا يوجد مزوّد خدمة معتمد بين الممول والمصلحة: الممول يرسل بنفسه ببيانات اعتماد تصدرها له المصلحة. تبني فكترة المستند بصيغة المصلحة وتسلسله وتختمه وترسله بهذه البيانات وتتابع حالته حتى القبول أو الرفض، وتدعم كذلك الإيصال الإلكتروني للبيع للمستهلك النهائي. أما شهادة الختم فتبقى على توكن في مكتب الممول، ويوقّع عليها وكيل صغير يعمل على الجهاز نفسه."
           }
         },
         {
@@ -116,7 +135,7 @@
 }
 </script>
 </head>
-<body>
+<body data-country="AE">
 
 <nav class="nav">
   <div class="shell nav-in">
@@ -138,6 +157,10 @@
     </div>
 
     <div class="nav-act">
+      <div class="ctry" data-country-switch="" role="group" aria-label="البلد">
+        <button type="button" data-country-to="AE" aria-pressed="true">الإمارات</button>
+        <button type="button" data-country-to="EG" aria-pressed="false">مصر</button>
+      </div>
       <a class="lang" href="../en/index.html" hreflang="en" lang="en">EN</a>
       <a class="btn btn-primary" href="#contact">اطلب عرضًا</a>
       <button class="burger" aria-expanded="false" aria-label="القائمة">
@@ -153,14 +176,24 @@
 <section style="padding-top:78px;padding-bottom:80px;overflow:hidden">
   <div class="shell split">
     <div>
-      <p class="pill reveal" style="margin-bottom:20px">مبنيّ للإمارات — معيار PINT AE</p>
+      <p class="pill reveal" style="margin-bottom:20px">
+        <span data-only="AE">مبنيّ للإمارات — معيار PINT AE</span>
+        <span data-only="EG">مبنيّ لمصر — منظومتا الفاتورة والإيصال</span></p>
 
-      <h1 class="reveal d1">نظام محاسبي واحد<br>يعرف قواعد الضريبة في الإمارات</h1>
+      <h1 class="reveal d1">نظام محاسبي واحد<br>
+        <span data-only="AE">يعرف قواعد الضريبة في الإمارات</span>
+        <span data-only="EG">يعرف قواعد الضريبة في مصر</span></h1>
 
-      <p class="lead reveal d2">
+      <p class="lead reveal d2" data-only="AE">
         ضريبة القيمة المضافة، والمناطق الحرة المعيّنة، والضريبة الانتقائية،
         ونظام هامش الربح، وحماية الأجور — تُحتسب على وجهها الصحيح دون أن
         تشغل بالك بها. والنظام جاهز للفوترة الإلكترونية قبل موعدها.
+      </p>
+
+      <p class="lead reveal d2" data-only="EG">
+        ضريبة القيمة المضافة أربعة عشر في المئة، والفاتورة الإلكترونية
+        والإيصال الإلكتروني بصيغة المصلحة — يبنيها النظام ويسلسلها ويختمها
+        ويرسلها ويتابع حالتها حتى القبول، والمحاسبة كاملة من ورائها.
       </p>
 
       <div class="reveal d3" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
@@ -203,11 +236,17 @@
           </div>
           <div class="mock-row"><span class="mock-k">زيت زيتون ٥٠٠ مل × ٤٠</span><span class="n">1,480.00</span></div>
           <div class="mock-row"><span class="mock-k">رسوم توصيل</span><span class="n">120.00</span></div>
-          <div class="mock-row"><span class="mock-k">ضريبة القيمة المضافة ٥٪</span><span class="n">80.00</span></div>
-          <div class="mock-row"><span class="mock-tot">الإجمالي</span><span class="mock-tot n">1,680.00</span></div>
-          <p style="margin:18px 0 0;padding:13px 15px;background:var(--indigo-wash);
+          <div class="mock-row" data-only="AE"><span class="mock-k">ضريبة القيمة المضافة ٥٪</span><span class="n">80.00</span></div>
+          <div class="mock-row" data-only="EG"><span class="mock-k">ضريبة القيمة المضافة ١٤٪</span><span class="n">224.00</span></div>
+          <div class="mock-row" data-only="AE"><span class="mock-tot">الإجمالي</span><span class="mock-tot n">1,680.00</span></div>
+          <div class="mock-row" data-only="EG"><span class="mock-tot">الإجمالي</span><span class="mock-tot n">1,824.00</span></div>
+          <p data-only="AE" style="margin:18px 0 0;padding:13px 15px;background:var(--indigo-wash);
                     border-radius:var(--r);font-size:12.5px;color:var(--indigo-deep)">
             ملف XML مطابق لمعيار PINT AE، جاهز للإرسال عبر مزوّد معتمد.
+          </p>
+          <p data-only="EG" style="margin:18px 0 0;padding:13px 15px;background:var(--indigo-wash);
+                    border-radius:var(--r);font-size:12.5px;color:var(--indigo-deep)">
+            مستند بصيغة المصلحة، مختوم ومُرسَل، والحالة متابَعة حتى القبول.
           </p>
         </div>
       </figure>
@@ -215,8 +254,63 @@
   </div>
 </section>
 
-<!-- ══════════════ المواعيد ══════════════ -->
-<section class="wash tight">
+<!-- ══════════════ مصر: المنظومة قائمة بالفعل ══════════════
+
+     ليست هذه ترجمة لقسم المواعيد الإماراتي. الإمارات ما زالت أمام
+     مواعيد قادمة، ومصر تجاوزتها: المنظومة سارية ومُلزِمة الآن. عرض
+     «استعد قبل الموعد» على تاجر مصري يقول له إن كاتب النص لا يعرف
+     سوقه — وهو استنتاج صحيح لو حدث.
+     ══════════════════════════════════════════════════════ -->
+<section class="wash tight" data-only="EG">
+  <div class="shell split-alt">
+    <div class="reveal">
+      <p class="eyebrow">منظومتا الفاتورة والإيصال الإلكتروني</p>
+      <h2>في مصر المنظومة سارية بالفعل، لا قادمة</h2>
+      <p>
+        الفاتورة الإلكترونية مُلزِمة للمسجَّلين في ضريبة القيمة المضافة،
+        والإيصال الإلكتروني مُلزِم لمن يبيع للمستهلك النهائي، وقد طُبّقا
+        على مراحل انتهت. ومن يصدر اليوم فاتورة ورقية لا ينتظر موعدًا،
+        بل يخالف قاعدة قائمة تترتب عليها غرامات.
+      </p>
+      <p>
+        وفكترة تبني المستند بصيغة المصلحة، وتسلسله تسلسلًا مطابقًا،
+        وتختمه، وترسله ببيانات اعتمادك أنت، وتتابع حالته حتى القبول أو
+        الرفض — ويظل مؤرشفًا عندك بعد ذلك.
+      </p>
+      <p style="font-size:13.5px;color:var(--muted)">
+        القواعد والمراحل منشورة من مصلحة الضرائب المصرية. يُرجى مراجعتها
+        عند اتخاذ القرار.
+      </p>
+    </div>
+
+    <div class="reveal d2">
+      <ol class="time" style="list-style:none;padding-inline-start:26px;margin:0">
+        <li class="time-i done"><p class="time-d">١</p>
+          <strong>بيانات اعتماد من المصلحة</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            تصدرها لك المصلحة باسمك، ولا يمر بينكما مزوّد معتمد.</p></li>
+        <li class="time-i done"><p class="time-d">٢</p>
+          <strong>رقم التسجيل وكود النشاط</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            تسع خانات، وكود النشاط الذي سُجّلت تحته.</p></li>
+        <li class="time-i done"><p class="time-d">٣</p>
+          <strong>ختم إلكتروني على توكن</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            الشهادة في مكتبك، ولا يستطيع خادم أن يلمسها — فيوقّع وكيل
+            صغير على الجهاز نفسه.</p></li>
+        <li class="time-i"><p class="time-d">٤</p>
+          <strong>تجربة على بيئة المصلحة التجريبية</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            دورة كاملة قبل أول فاتورة حقيقية.</p></li>
+        <li class="time-i"><p class="time-d">٥</p>
+          <strong>التحويل إلى الإنتاج</strong></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ الإمارات: المواعيد ══════════════ -->
+<section class="wash tight" data-only="AE">
   <div class="shell split-alt">
     <div class="reveal">
       <p class="eyebrow">القراران الوزاريان ٢٤٣ و٢٤٤ لسنة ٢٠٢٥</p>
@@ -262,7 +356,7 @@
     </div>
 
     <div class="grid g3">
-      <article class="card hover reveal">
+      <article class="card hover reveal" data-only="AE">
         <h3 style="font-size:18px">ضريبة على كامل سعر سيارة مستعملة</h3>
         <p style="font-size:14.5px">
           معرض يبيع سيارة بستين ألف درهم اشتراها بستة وخمسين ألفًا. الضريبة
@@ -310,7 +404,7 @@
         <h3 style="font-size:18px">الفوترة والفوترة الإلكترونية</h3>
         <p style="font-size:14.5px">فاتورة ضريبية بالعربية والإنجليزية مع رمز
           الاستجابة السريعة، وعروض أسعار، وفواتير متكررة، وإشعارات دائنة ومدينة،
-          وتوليد ملفات PINT AE مع أرشيف وإعادة إرسال.</p>
+          <span data-only="AE">وتوليد ملفات PINT AE مع أرشيف وإعادة إرسال.</span><span data-only="EG">وبناء مستند المصلحة والإيصال الإلكتروني وختمهما وإرسالهما ومتابعة حالتهما.</span></p>
       </article>
       <article class="card hover reveal d1">
         <h3 style="font-size:18px">المحاسبة الكاملة</h3>
@@ -452,8 +546,10 @@
       <article class="card hover reveal">
         <p class="pill" style="margin-bottom:14px">المبتدئة</p>
         <p style="margin-bottom:14px">
-          <span class="n" style="font-size:38px;font-weight:800">199</span>
-          <span style="color:var(--muted);font-size:14px"> درهمًا شهريًا</span></p>
+          <span class="n" style="font-size:38px;font-weight:800" data-price=""
+            data-ae-monthly="199" data-ae-yearly="1,990"
+            data-eg-monthly="899" data-eg-yearly="8,990">199</span>
+          <span style="color:var(--muted);font-size:14px"> <span data-cur="" data-ae="درهمًا" data-eg="جنيهًا">درهمًا</span> شهريًا</span></p>
         <p style="font-size:14px">الفوترة والفوترة الإلكترونية والتقارير. حتى ثلاثة مستخدمين.</p>
       </article>
       <article class="card hover reveal d1" style="border-color:var(--indigo);
@@ -461,15 +557,19 @@
         <p class="pill" style="margin-bottom:14px;background:var(--indigo);color:#fff">
           الأعمال — الأكثر طلبًا</p>
         <p style="margin-bottom:14px">
-          <span class="n" style="font-size:38px;font-weight:800">499</span>
-          <span style="color:var(--muted);font-size:14px"> درهمًا شهريًا</span></p>
+          <span class="n" style="font-size:38px;font-weight:800" data-price=""
+            data-ae-monthly="499" data-ae-yearly="4,990"
+            data-eg-monthly="1,999" data-eg-yearly="19,990">499</span>
+          <span style="color:var(--muted);font-size:14px"> <span data-cur="" data-ae="درهمًا" data-eg="جنيهًا">درهمًا</span> شهريًا</span></p>
         <p style="font-size:14px">تضيف المشتريات والمخزون والمحاسبة الكاملة. حتى عشرة مستخدمين.</p>
       </article>
       <article class="card hover reveal d2">
         <p class="pill" style="margin-bottom:14px">الاحترافية</p>
         <p style="margin-bottom:14px">
-          <span class="n" style="font-size:38px;font-weight:800">899</span>
-          <span style="color:var(--muted);font-size:14px"> درهمًا شهريًا</span></p>
+          <span class="n" style="font-size:38px;font-weight:800" data-price=""
+            data-ae-monthly="899" data-ae-yearly="8,990"
+            data-eg-monthly="3,999" data-eg-yearly="39,990">899</span>
+          <span style="color:var(--muted);font-size:14px"> <span data-cur="" data-ae="درهمًا" data-eg="جنيهًا">درهمًا</span> شهريًا</span></p>
         <p style="font-size:14px">كل ما سبق، ومعه الرواتب والمشاريع والأصول. حتى خمسة وعشرين مستخدمًا.</p>
       </article>
     </div>
@@ -487,26 +587,32 @@
       <h2 class="reveal">أسئلة متكررة</h2>
     </div>
     <div class="faq reveal d1">
-      <details open>
+      <details open data-only="AE">
         <summary>ما هي الفوترة الإلكترونية في الإمارات ومتى تصبح إلزامية؟</summary>
         <p>هي تبادل الفواتير وإبلاغ الهيئة بها في صيغة منظّمة عبر مزوّد خدمة
           معتمد. على المنشآت التي تبلغ إيراداتها خمسين مليون درهم أو أكثر تعيين
           مزوّد قبل الثلاثين من أكتوبر ٢٠٢٦، ويبدأ الإبلاغ الإلزامي في الأول من
           يناير ٢٠٢٧، ثم تلحق بقية المنشآت في يوليو ٢٠٢٧.</p>
       </details>
-      <details>
+      <details data-only="EG">
+        <summary>هل فكترة مزوّد خدمة معتمد؟</summary>
+        <p>لا يوجد في مصر مزوّد معتمد بين الممول والمصلحة أصلًا: الممول يرسل
+          بنفسه ببيانات اعتماد تصدرها له المصلحة، وفكترة تنفّذ هذا الإرسال
+          نيابةً عنه بتلك البيانات. أما شهادة الختم فتبقى على توكن في مكتبه.</p>
+      </details>
+      <details data-only="AE">
         <summary>هل فكترة مزوّد خدمة معتمد؟</summary>
         <p>لا. تولّد فكترة الفاتورة بمعيار PINT AE وتتحقق منها وتؤرشفها وتتابع
           حالتها، ويمر الإبلاغ الرسمي عبر مزوّد معتمد تتعاقد معه المنشأة ويتصل
           به النظام.</p>
       </details>
-      <details>
+      <details data-only="AE">
         <summary>كيف تُحتسب الضريبة على بيع سيارة مستعملة؟</summary>
         <p>على هامش الربح لا على السعر الكامل. سيارة اشتُريت بـ ٥٦٬٠٠٠ درهم
           وبيعت بـ ٦٠٬٠٠٠ هامشها ٤٬٠٠٠، والضريبة داخله بنسبة ٥ إلى ١٠٥ أي
           ١٩٠٫٤٨ درهمًا.</p>
       </details>
-      <details>
+      <details data-only="AE">
         <summary>هل البيع إلى منطقة حرة معيّنة تصدير؟</summary>
         <p>لا. الشركة داخل المنطقة الحرة المعيّنة شركة إماراتية، والبيع إليها من
           البر الرئيسي خاضع للنسبة الأساسية. كما أن القاعدة تشمل السلع دون
@@ -536,7 +642,8 @@
     </p>
 
     <p class="reveal d4" style="font-size:13.5px;color:var(--muted);margin-top:26px">
-      فكترة ليست مزوّد خدمة معتمد. تعيّن المنشأة مزوّدها ويتصل النظام به.
+      <span data-only="AE">فكترة ليست مزوّد خدمة معتمد. تعيّن المنشأة مزوّدها ويتصل النظام به.</span>
+      <span data-only="EG">فكترة ليست مزوّد خدمة معتمد، ولا يوجد في مصر مزوّد معتمد بين الممول والمصلحة أصلًا: الإرسال يتم ببيانات اعتماد الممول نفسه.</span>
     </p>
   </div>
 </section>

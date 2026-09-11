@@ -160,6 +160,28 @@ p { margin: 0 0 16px; color: var(--ink-2); }
 }
 .lang:hover { border-color: var(--indigo); color: var(--indigo); }
 
+/* ---------- مبدّل البلد ----------
+
+   الضريبة والفوترة الإلكترونية تختلفان بين البلدين اختلافًا
+   يغيّر معنى الصفحة، لا صياغتها. زائر مصري يقرأ «مزوّد خدمة
+   معتمد» يستنتج أن النظام ليس لبلده — وهو استنتاج معقول من نص
+   خاطئ. فالبلد اختيار ظاهر، لا افتراض صامت. */
+
+.ctry { display: inline-flex; gap: 2px; padding: 2px;
+  border: 1px solid var(--line-strong); background: var(--surface);
+  border-radius: 999px; }
+.ctry button { border: 0; background: none; cursor: pointer; font: inherit;
+  border-radius: 999px; padding: 5px 12px; font-size: 12.5px; font-weight: 700;
+  color: var(--ink-2); transition: background .16s, color .16s; white-space: nowrap; }
+.ctry button:hover { color: var(--indigo); }
+.ctry button[aria-pressed="true"] { background: var(--indigo); color: #fff; }
+
+/* بلا شيفرة يرى الزائر محتوى البلدين معًا — وهو صحيح، الموقع
+   يخدمهما. الإخفاء مشروط بعمل الشيفرة حتى لا تختفي نصف الصفحة
+   على متصفح عطّلها، ولتفهرس محركات البحث البلدين كليهما. */
+.js body[data-country="AE"] [data-only="EG"],
+.js body[data-country="EG"] [data-only="AE"] { display: none; }
+
 .burger { display: none; border: 1px solid var(--line-strong); background: var(--surface);
   border-radius: var(--r); padding: 9px 11px; cursor: pointer; }
 .burger span { display: block; width: 18px; height: 2px; background: var(--ink);

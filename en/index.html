@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Faktra — e-invoicing and accounting for UAE businesses</title>
-<meta name="description" content="A complete accounting system for businesses in the UAE: PINT AE e-invoicing, VAT, Designated Zones, the margin scheme, stock, purchasing and payroll with WPS. Fourteen-day free trial.">
+<title>Faktra — e-invoicing and accounting for the UAE and Egypt</title>
+<meta name="description" content="A complete accounting system for the UAE and Egypt: PINT AE e-invoicing in the UAE, and the tax authority's e-invoice and e-receipt in Egypt. VAT, stock, purchasing and payroll. Fourteen-day free trial.">
 
 <link rel="canonical" href="https://faktra.ae/en/">
 <link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/">
@@ -13,8 +13,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_AE">
 <meta property="og:site_name" content="Faktra">
-<meta property="og:title" content="Faktra — e-invoicing and accounting for UAE businesses">
-<meta property="og:description" content="A complete accounting system for businesses in the UAE: PINT AE e-invoicing, VAT, Designated Zones, the margin scheme, stock, purchasing and payroll with WPS. Fourteen-day free trial.">
+<meta property="og:title" content="Faktra — e-invoicing and accounting for the UAE and Egypt">
+<meta property="og:description" content="A complete accounting system for the UAE and Egypt: PINT AE e-invoicing in the UAE, and the tax authority's e-invoice and e-receipt in Egypt. VAT, stock, purchasing and payroll. Fourteen-day free trial.">
 <meta property="og:url" content="https://faktra.ae/en/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -41,7 +41,7 @@
 
 <link rel="stylesheet" href="../site.css">
 </head>
-<body>
+<body data-country="AE">
 
 <!-- ══════════════ شريط التنقل ══════════════ -->
 <nav class="nav">
@@ -64,6 +64,10 @@
     </div>
 
     <div class="nav-act">
+      <div class="ctry" data-country-switch="" role="group" aria-label="Country">
+        <button type="button" data-country-to="AE" aria-pressed="true">UAE</button>
+        <button type="button" data-country-to="EG" aria-pressed="false">Egypt</button>
+      </div>
       <a class="lang" href="../ar/index.html" hreflang="ar" lang="ar">ع</a>
       <a class="btn btn-primary" href="#contact">
         Book a demo
@@ -84,19 +88,24 @@
           <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
         </svg>
         
-        Built for the UAE — PINT AE
+        <span data-only="AE">Built for the UAE — PINT AE</span><span data-only="EG">Built for Egypt — e-invoice and e-receipt</span>
       </div>
 
       <h1 class="reveal d1">
         
-        Invoicing, accounting and stock<br>in one system that knows UAE rules
+        Invoicing, accounting and stock<br>in one system that knows <span data-only="AE">UAE rules</span><span data-only="EG">Egyptian rules</span>
       </h1>
 
-      <p class="lead reveal d2">
-        
+      <p class="lead reveal d2" data-only="AE">
         VAT, Designated Zones, excise, the margin scheme and WPS —
           worked out correctly without you thinking about them.
           And ready for e-invoicing before the deadline.
+      </p>
+
+      <p class="lead reveal d2" data-only="EG">
+        VAT at fourteen per cent, and the tax authority's e-invoice and
+          e-receipt — built, serialised, sealed, submitted and followed through
+          to acceptance, with the full accounting behind them.
       </p>
 
       <div class="reveal d3" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px">
@@ -157,14 +166,21 @@
             <span class="mock-k">Delivery</span>
             <span class="n">120.00</span>
           </div>
-          <div class="mock-row">
-            <span class="mock-k">
-              VAT 5%</span>
+          <div class="mock-row" data-only="AE">
+            <span class="mock-k">VAT 5%</span>
             <span class="n">80.00</span>
           </div>
-          <div class="mock-row">
+          <div class="mock-row" data-only="EG">
+            <span class="mock-k">VAT 14%</span>
+            <span class="n">224.00</span>
+          </div>
+          <div class="mock-row" data-only="AE">
             <span class="mock-tot">Total</span>
             <span class="mock-tot n">1,680.00</span>
+          </div>
+          <div class="mock-row" data-only="EG">
+            <span class="mock-tot">Total</span>
+            <span class="mock-tot n">1,824.00</span>
           </div>
 
           <div style="margin-top:18px;padding:13px 15px;background:var(--indigo-wash);
@@ -173,7 +189,7 @@
             <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px;flex:none">
               <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             
-            PINT AE compliant XML — ready to send through an accredited provider
+            <span data-only="AE">PINT AE compliant XML — ready to send through an accredited provider</span><span data-only="EG">An authority-format document, sealed and submitted, its status followed to acceptance</span>
           </div>
         </div>
       </div>
@@ -181,8 +197,66 @@
   </div>
 </section>
 
-<!-- ══════════════ الموعد ══════════════ -->
-<section class="wash tight">
+<!-- ══════════════ Egypt: already in force ══════════════
+
+     Not a translation of the UAE deadlines section. The UAE still has
+     dates ahead of it; Egypt is past them — the rules are in force
+     today. Telling an Egyptian trader to "get ready before the
+     deadline" tells them the person who wrote the page does not know
+     their market, and they would be right.
+     ═══════════════════════════════════════════════════════ -->
+<section class="wash tight" data-only="EG">
+  <div class="shell split-alt">
+    <div class="reveal">
+      <div class="eyebrow">The e-invoice and e-receipt systems</div>
+      <h2>In Egypt the rules are already in force</h2>
+      <p>
+        The e-invoice is mandatory for VAT-registered businesses, and the
+        e-receipt for anyone selling to consumers. Both were rolled out in
+        phases that have finished. A paper invoice issued today is not
+        early — it is outside a rule that already carries penalties.
+      </p>
+      <p>
+        Faktra builds the document in the authority's format, serialises it
+        exactly as specified, seals it, submits it under your own
+        credentials and follows its status through to acceptance or
+        rejection. It stays archived with you afterwards.
+      </p>
+      <p style="font-size:13.5px;color:var(--muted)">
+        The rules and phases are published by the Egyptian Tax Authority.
+        Please check them when making a decision.
+      </p>
+    </div>
+
+    <div class="reveal d2">
+      <ol class="time" style="list-style:none;padding-inline-start:26px;margin:0">
+        <li class="time-i done"><p class="time-d">1</p>
+          <strong>Credentials from the authority</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            Issued to you, in your name. No accredited provider stands
+            between you and the authority.</p></li>
+        <li class="time-i done"><p class="time-d">2</p>
+          <strong>Registration number and activity code</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            Nine digits, and the activity you registered under.</p></li>
+        <li class="time-i done"><p class="time-d">3</p>
+          <strong>An electronic seal on a token</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            The certificate lives in your office and no server can touch
+            it, so a small agent on that machine does the signing.</p></li>
+        <li class="time-i"><p class="time-d">4</p>
+          <strong>A full cycle on the authority's test environment</strong>
+          <p style="font-size:13.5px;color:var(--muted);margin:4px 0 0">
+            Before the first real invoice, not after.</p></li>
+        <li class="time-i"><p class="time-d">5</p>
+          <strong>Switch to production</strong></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ UAE: the dates ══════════════ -->
+<section class="wash tight" data-only="AE">
   <div class="shell split-alt" id="deadline-grid">
     <div class="reveal">
       <div class="eyebrow">
@@ -260,12 +334,10 @@
         <div class="ico" style="background:var(--warn-wash);color:var(--warn)">
           <svg viewBox="0 0 24 24" fill="none"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1118 0z" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"></circle></svg>
         </div>
-        <h4>
+        <h4 data-only="AE">
           A free-zone sale treated as an export</h4>
         <p style="font-size:14.5px">
-          Selling into a Designated Zone is not an export, and the
-          rule treats goods and services differently. Faktra knows the four rules,
-          reviews every invoice against them, and tells you when one disagrees.</p>
+          <span data-only="AE">Selling into a Designated Zone is not an export, and the rule treats goods and services differently. Faktra knows the four rules, reviews every invoice against them, and tells you when one disagrees.</span></p>
       </div>
 
       <div class="card hover reveal d3">
@@ -304,7 +376,7 @@
         <h4>Invoicing &amp; e-invoicing</h4>
         <p style="font-size:14.5px">
           Bilingual tax invoices with a QR code, quotations, recurring
-          invoices, credit and debit notes, and PINT AE XML with an archive and retry.</p>
+          invoices, credit and debit notes, and <span data-only="AE">PINT AE XML with an archive and retry.</span><span data-only="EG">the authority's e-invoice and e-receipt — sealed, submitted and tracked.</span></p>
       </div>
 
       <div class="card hover reveal d1">
@@ -495,9 +567,11 @@
       <div class="card hover reveal">
         <div class="pill" style="margin-bottom:14px">Starter</div>
         <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:14px">
-          <span class="n" style="font-size:38px;font-weight:800">199</span>
+          <span class="n" style="font-size:38px;font-weight:800" data-price=""
+                data-ae-monthly="199" data-ae-yearly="1,990"
+                data-eg-monthly="899" data-eg-yearly="8,990">199</span>
           <span style="color:var(--muted);font-size:14px">
-            AED / month</span>
+            <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / month</span>
         </div>
         <p style="font-size:14px">
           Invoicing, e-invoicing and reports. Up to 3 users.</p>
@@ -508,9 +582,11 @@
         <div class="pill" style="margin-bottom:14px;background:var(--indigo);color:#fff">
           Business — most popular</div>
         <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:14px">
-          <span class="n" style="font-size:38px;font-weight:800">499</span>
+          <span class="n" style="font-size:38px;font-weight:800" data-price=""
+                data-ae-monthly="499" data-ae-yearly="4,990"
+                data-eg-monthly="1,999" data-eg-yearly="19,990">499</span>
           <span style="color:var(--muted);font-size:14px">
-            AED / month</span>
+            <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / month</span>
         </div>
         <p style="font-size:14px">
           Adds purchasing, stock and full accounting. Up to 10 users.</p>
@@ -519,9 +595,11 @@
       <div class="card hover reveal d2">
         <div class="pill" style="margin-bottom:14px">Professional</div>
         <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:14px">
-          <span class="n" style="font-size:38px;font-weight:800">899</span>
+          <span class="n" style="font-size:38px;font-weight:800" data-price=""
+                data-ae-monthly="899" data-ae-yearly="8,990"
+                data-eg-monthly="3,999" data-eg-yearly="39,990">899</span>
           <span style="color:var(--muted);font-size:14px">
-            AED / month</span>
+            <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / month</span>
         </div>
         <p style="font-size:14px">
           Everything, plus payroll, projects and assets. Up to 25 users.</p>
@@ -559,9 +637,8 @@
     </div>
 
     <p class="reveal d4" style="font-size:13.5px;color:var(--muted);margin-top:26px">
-      
-      Faktra is not an accredited service provider. You appoint yours
-        and the system connects to it.
+      <span data-only="AE">Faktra is not an accredited service provider. You appoint yours and the system connects to it.</span>
+      <span data-only="EG">Faktra is not an accredited service provider — and Egypt has none between the taxpayer and the authority. Submission runs under the taxpayer's own credentials.</span>
     </p>
   </div>
 </section>
@@ -582,7 +659,7 @@
         </div>
         <p style="color:#98A1B2;font-size:14px;max-width:34ch">
           
-          E-invoicing and accounting for businesses in the UAE.</p>
+          E-invoicing and accounting for businesses in the UAE and Egypt.</p>
       </div>
 
       <div>

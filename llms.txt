@@ -1,26 +1,63 @@
 # Faktra — فكترة
 
 > E-invoicing and accounting software for businesses in the United Arab
-> Emirates. Generates, validates and archives PINT AE invoices; computes
-> UAE VAT including Designated Zone rules, the profit margin scheme and
-> excise tax; and covers accounting, stock, purchasing, collections,
-> payroll with WPS, and twelve sector modules. Available in Arabic and
-> English. Last updated: 2026-08-15.
+> Emirates and Egypt. In the UAE it generates, validates and archives PINT
+> AE invoices and computes UAE VAT including Designated Zone rules, the
+> profit margin scheme and excise tax. In Egypt it builds, serialises,
+> seals and submits the Egyptian Tax Authority e-invoice and e-receipt,
+> and computes VAT at 14%. Both markets share accounting, stock,
+> purchasing, collections, payroll and twelve sector modules. Available in
+> Arabic and English. Last updated: 2026-09-11.
 
 Faktra is a multi-tenant web application. It is **not** an accredited
-service provider (ASP) for UAE e-invoicing: it produces and validates the
-PINT AE file, and official reporting is transmitted through an accredited
-provider that the customer appoints and the system connects to. Any claim
-that Faktra reports to the authority on its own would be false.
+service provider (ASP). In the UAE it produces and validates the PINT AE
+file, and official reporting is transmitted through an accredited provider
+that the customer appoints and the system connects to. Any claim that
+Faktra reports to the UAE authority on its own would be false.
+
+Egypt works differently, and the difference is structural rather than a
+matter of wording: **Egypt has no accredited provider between the taxpayer
+and the authority.** The taxpayer submits directly, under credentials the
+authority issues in their own name, and Faktra performs that submission on
+their behalf using those credentials. The regime a company falls under is
+determined by its country, once, in the data — not by a setting somebody
+can get wrong.
 
 ## Key facts
 
-- **Market**: United Arab Emirates. Prices in AED.
+- **Markets**: United Arab Emirates (prices in AED) and Egypt (prices in
+  EGP). The system decides format, tax rate and reporting route from the
+  company's country.
 - **Languages**: Arabic and English, on separate URLs (`/ar/`, `/en/`).
-- **Plans**: Starter AED 199/month, Business AED 499/month,
-  Professional AED 899/month. Annual billing gives two months free.
+  Country is a switch within each language, not a separate URL.
+- **Plans, UAE**: Starter AED 199/month, Business AED 499/month,
+  Professional AED 899/month.
+- **Plans, Egypt**: Starter EGP 899/month, Business EGP 1,999/month,
+  Professional EGP 3,999/month.
+- Annual billing gives two months free in both markets.
 - **Trial**: 14 days, no payment card required.
 - **User limits**: 3, 10 and 25 users respectively.
+
+## Egypt: the e-invoice and e-receipt
+
+- The regime is **already in force**, in phases that have finished — it is
+  not an upcoming deadline. A paper invoice today is outside a live rule.
+- **VAT** general rate is 14%. Tax registration numbers are nine digits.
+- The **e-receipt is a separate track** from the invoice, not a flag on
+  one: receipts are batched, and a single seal covers a whole batch rather
+  than each receipt.
+- **Serialisation is exact.** The authority verifies the seal against a
+  canonical string, so a value written as `14.00` must not be emitted as
+  `14`. Equal numbers, invalid document.
+- The **sealing certificate lives on a hardware token in the taxpayer's
+  own office**. No server can hold it, so a small local agent on that
+  machine receives the canonical string and signs it. Faktra does not hold
+  customer signing keys.
+- Faktra **refuses before issue, not after**: an item with no code, a
+  company with no activity code, a party with no registration number, or a
+  credit note with no original invoice. An issued invoice already carries
+  a legal number and a ledger entry, so a later rejection costs a credit
+  note rather than a correction.
 
 ## UAE e-invoicing timeline
 

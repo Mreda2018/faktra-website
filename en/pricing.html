@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Faktra pricing — plans and subscriptions in UAE dirhams</title>
-<meta name="description" content="Three plans: Starter AED 199, Business AED 499, Professional AED 899 per month. A 14-day free trial with no card, and two months free on annual billing.">
+<title>Faktra pricing — plans and subscriptions in the UAE and Egypt</title>
+<meta name="description" content="UAE: Starter AED 199, Business AED 499, Professional AED 899 per month. Egypt: EGP 899, 1,999 and 3,999 per month. A 14-day free trial with no card, and two months free on annual billing.">
 
 <link rel="canonical" href="https://faktra.ae/en/pricing.html">
 <link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/pricing.html">
@@ -13,8 +13,8 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_AE">
 <meta property="og:site_name" content="Faktra">
-<meta property="og:title" content="Faktra pricing — plans and subscriptions in UAE dirhams">
-<meta property="og:description" content="Three plans: Starter AED 199, Business AED 499, Professional AED 899 per month. A 14-day free trial with no card, and two months free on annual billing.">
+<meta property="og:title" content="Faktra pricing — plans and subscriptions in the UAE and Egypt">
+<meta property="og:description" content="UAE: Starter AED 199, Business AED 499, Professional AED 899 per month. Egypt: EGP 899, 1,999 and 3,999 per month. A 14-day free trial with no card, and two months free on annual billing.">
 <meta property="og:url" content="https://faktra.ae/en/pricing.html">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -96,7 +96,7 @@
   }
 </style>
 </head>
-<body data-billing="monthly">
+<body data-billing="monthly" data-country="AE">
 
 <nav class="nav">
   <div class="shell nav-in">
@@ -116,6 +116,10 @@
       <a href="./pricing.html" class="on">Pricing</a>
     </div>
     <div class="nav-act">
+      <div class="ctry" data-country-switch="" role="group" aria-label="Country">
+        <button type="button" data-country-to="AE" aria-pressed="true">UAE</button>
+        <button type="button" data-country-to="EG" aria-pressed="false">Egypt</button>
+      </div>
       <a class="lang" href="../ar/pricing.html" hreflang="ar" lang="ar">ع</a>
       <a class="btn btn-primary" href="./index.html#contact">
         Book a demo</a>
@@ -134,7 +138,7 @@
       Pay for what you use</h1>
     <p class="lead reveal d2" style="margin:0 auto 30px">
       
-      All prices in UAE dirhams and include everything in the plan.
+      <span data-only="AE">All prices in UAE dirhams</span><span data-only="EG">All prices in Egyptian pounds</span> and include everything in the plan.
         No setup fee, nothing hidden.</p>
 
     <div class="reveal d3 cycle" data-cycle="">
@@ -155,12 +159,14 @@
       <div class="card plan reveal">
         <div class="pill">Starter</div>
         <div class="price">
-          <span class="amt" data-price="" data-monthly="199" data-yearly="1,990">199</span>
+          <span class="amt" data-price=""
+                data-ae-monthly="199" data-ae-yearly="1,990"
+                data-eg-monthly="899" data-eg-yearly="8,990">199</span>
           <span style="color:var(--muted);font-size:14px">
             <span data-period-label="" data-show="monthly">
-              AED / month</span>
+              <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / month</span>
             <span data-period-label="" data-show="yearly">
-              AED / year</span>
+              <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / year</span>
           </span>
         </div>
         <p style="font-size:14.5px;color:var(--muted);margin-bottom:0">
@@ -173,8 +179,7 @@
             <span>
               Bilingual invoices and quotations</span></li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-            <span>
-              PINT AE XML generation and archive</span></li>
+            <span><span data-only="AE">PINT AE XML generation and archive</span><span data-only="EG">ETA document and e-receipt, sealed and archived</span></span></li>
           <li><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
             <span>
               VAT return</span></li>
@@ -196,12 +201,14 @@
         <div class="pill" style="background:var(--indigo);color:#fff">
           Business — most popular</div>
         <div class="price">
-          <span class="amt" data-price="" data-monthly="499" data-yearly="4,990">499</span>
+          <span class="amt" data-price=""
+                data-ae-monthly="499" data-ae-yearly="4,990"
+                data-eg-monthly="1,999" data-eg-yearly="19,990">499</span>
           <span style="color:var(--muted);font-size:14px">
             <span data-period-label="" data-show="monthly">
-              AED / month</span>
+              <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / month</span>
             <span data-period-label="" data-show="yearly">
-              AED / year</span>
+              <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / year</span>
           </span>
         </div>
         <p style="font-size:14.5px;color:var(--muted);margin-bottom:0">
@@ -239,12 +246,14 @@
       <div class="card plan reveal d2">
         <div class="pill">Professional</div>
         <div class="price">
-          <span class="amt" data-price="" data-monthly="899" data-yearly="8,990">899</span>
+          <span class="amt" data-price=""
+                data-ae-monthly="899" data-ae-yearly="8,990"
+                data-eg-monthly="3,999" data-eg-yearly="39,990">899</span>
           <span style="color:var(--muted);font-size:14px">
             <span data-period-label="" data-show="monthly">
-              AED / month</span>
+              <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / month</span>
             <span data-period-label="" data-show="yearly">
-              AED / year</span>
+              <span data-cur="" data-ae="AED" data-eg="EGP">AED</span> / year</span>
           </span>
         </div>
         <p style="font-size:14.5px;color:var(--muted);margin-bottom:0">
@@ -309,8 +318,7 @@
           <tr><td>
             Quotations and recurring invoices</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>
-            PINT AE XML and archive</td>
+          <tr><td><span data-only="AE">PINT AE XML and archive</span><span data-only="EG">ETA document, e-receipt and archive</span></td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
           <tr><td>
             Simplified invoice and thermal receipt</td>
@@ -319,13 +327,11 @@
           <tr class="grp"><td colspan="4">Tax</td></tr>
           <tr><td>VAT return</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>
-            Designated Zones and their review</td>
+          <tr data-only="AE"><td>Designated Zones and their review</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>Profit margin scheme</td>
+          <tr data-only="AE"><td>Profit margin scheme</td>
             <td class="c yes">✓</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
-          <tr><td>
-            Excise tax and its return</td>
+          <tr data-only="AE"><td>Excise tax and its return</td>
             <td class="c no">—</td><td class="c best yes">✓</td><td class="c yes">✓</td></tr>
           <tr><td>Corporate tax</td>
             <td class="c no">—</td><td class="c best no">—</td><td class="c yes">✓</td></tr>
@@ -392,15 +398,26 @@
     </div>
 
     <div class="faq reveal d1">
-      <details open="">
-        <summary>
-          Is Faktra an accredited service provider?</summary>
+      <details open="" data-only="AE">
+        <summary>Is Faktra an accredited service provider?</summary>
         <p>
           No. Faktra generates the PINT AE invoice, validates it,
           archives it and tracks its status. Official reporting goes through an
           accredited provider that you appoint, and the system connects to it.
           Anyone telling you their software reports officially on its own, without
           an accredited provider, should show you their contract.</p>
+      </details>
+
+      <details open="" data-only="EG">
+        <summary>How does the document reach the authority in Egypt?</summary>
+        <p>
+          Egypt has no accredited provider between the taxpayer and the authority:
+          the taxpayer submits directly, with credentials the authority issues to
+          them. Faktra carries out that submission on their behalf under those
+          credentials and follows the status through to acceptance or rejection.
+          The electronic seal is the one part no server can hold — its certificate
+          lives on a token in your office, so a small agent on that machine does
+          the signing.</p>
       </details>
 
       <details>
@@ -481,7 +498,7 @@
         </div>
         <p style="color:#98A1B2;font-size:14px;max-width:34ch">
           
-          E-invoicing and accounting for businesses in the UAE.</p>
+          E-invoicing and accounting for businesses in the UAE and Egypt.</p>
       </div>
       <div>
         <h5>Product</h5>
@@ -505,7 +522,7 @@
       <span>© <span class="n">2026</span> 
         Faktra. All rights reserved.</span>
       <span>
-        Prices in AED, before VAT</span>
+        <span data-only="AE">Prices in AED</span><span data-only="EG">Prices in EGP</span>, before VAT</span>
     </div>
   </div>
 </footer>

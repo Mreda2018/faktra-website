@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Faktra documentation — every module explained with worked examples</title>
-<meta name="description" content="A detailed guide to Faktra: PINT AE e-invoicing, UAE VAT, Designated Zones, the margin scheme, stock, payroll and more — with a worked numeric example for each.">
+<meta name="description" content="A detailed guide to Faktra across the UAE and Egypt: PINT AE e-invoicing, the Egyptian Tax Authority e-invoice and e-receipt, VAT, stock, payroll and more — with a worked numeric example for each.">
 
 <link rel="canonical" href="https://faktra.ae/en/docs.html">
 <link rel="alternate" hreflang="ar" href="https://faktra.ae/ar/docs.html">
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en_AE">
 <meta property="og:site_name" content="Faktra">
 <meta property="og:title" content="Faktra documentation — every module explained with worked examples">
-<meta property="og:description" content="A detailed guide to Faktra: PINT AE e-invoicing, UAE VAT, Designated Zones, the margin scheme, stock, payroll and more — with a worked numeric example for each.">
+<meta property="og:description" content="A detailed guide to Faktra across the UAE and Egypt: PINT AE e-invoicing, the Egyptian Tax Authority e-invoice and e-receipt, VAT, stock, payroll and more — with a worked numeric example for each.">
 <meta property="og:url" content="https://faktra.ae/en/docs.html">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -100,7 +100,7 @@
   }
 </style>
 </head>
-<body>
+<body data-country="AE">
 
 <nav class="nav">
   <div class="shell nav-in">
@@ -120,6 +120,10 @@
       <a href="./pricing.html">Pricing</a>
     </div>
     <div class="nav-act">
+      <div class="ctry" data-country-switch="" role="group" aria-label="Country">
+        <button type="button" data-country-to="AE" aria-pressed="true">UAE</button>
+        <button type="button" data-country-to="EG" aria-pressed="false">Egypt</button>
+      </div>
       <a class="lang" href="../ar/docs.html" hreflang="ar" lang="ar">ع</a>
       <a class="btn btn-primary" href="./index.html#contact">
         Book a demo</a>
@@ -141,9 +145,9 @@
 
       <h6>Tax</h6>
       <a href="#vat">VAT</a>
-      <a href="#zones">Designated Zones</a>
-      <a href="#margin">Margin scheme</a>
-      <a href="#excise">Excise</a>
+      <a href="#zones" data-only="AE">Designated Zones</a>
+      <a href="#margin" data-only="AE">Margin scheme</a>
+      <a href="#excise" data-only="AE">Excise</a>
 
       <h6>Money</h6>
       <a href="#accounting">Accounting</a>
@@ -258,19 +262,52 @@
 
     <section id="einvoicing">
       <h2>E-invoicing</h2>
-      <p>
+      <p data-only="AE">
         Faktra produces a <span class="en">PINT AE</span> XML file for
         every invoice, validates it before sending, and keeps an archived copy. An
         outbox tracks the status of each one and retries what fails.</p>
 
-      <div class="warn-box">
+      <div class="warn-box" data-only="AE">
         <strong>Important to be clear about:</strong>
-        
          Faktra is <u>not</u> an accredited service provider. Official
           reporting goes through a provider you contract with, and the system connects
           to it. Any software claiming to report officially on its own should be asked
           to show its accreditation.
       </div>
+
+      <!-- Egypt: a different regime, not different wording -->
+      <p data-only="EG">
+        Faktra builds the authority's document for every invoice and serialises it
+        exactly as the specification requires — which is where all the precision
+        sits: the authority verifies the seal against that string character by
+        character, so turning <span dir="ltr">14.00</span> into
+        <span dir="ltr">14</span> makes the document invalid even though the number
+        is the same. It is then sealed, submitted, and followed to acceptance, and
+        stays archived.</p>
+
+      <div class="warn-box" data-only="EG">
+        <strong>Important to be clear about:</strong>
+        Egypt has no accredited service provider between the taxpayer and the
+          authority: submission runs under credentials the authority issues in your
+          name. The sealing certificate lives on a token in your office, and no
+          server — ours or anyone's — can touch it, so a small agent on that machine
+          receives the string and signs it.
+      </div>
+
+      <h3 data-only="EG">The e-receipt</h3>
+      <p data-only="EG">
+        Selling to consumers is a separate track, not a flag on an invoice.
+        Receipts are collected into batches, and one seal covers a whole batch
+        rather than each receipt — so a till doing a hundred an hour does not sign
+        a hundred times.</p>
+
+      <h3 data-only="EG">What is refused before issue, not after</h3>
+      <p data-only="EG">
+        An issued invoice already carries a legal number and a ledger entry;
+        withdrawing it after the authority rejects it is a credit note and a
+        conversation. So the refusal comes first: an item with no code, a company
+        with no activity code, a party with no registration number, a credit note
+        with no original invoice — and the message names the line at fault.</p>
 
       <h3>What is validated first</h3>
       <ul>
@@ -291,6 +328,10 @@
         The return is built from the invoices themselves, not from a
         separate table somebody updates by hand, so it cannot disagree with what you
         actually issued.</p>
+      <p data-only="AE" class="note">The UAE standard rate is five per cent.</p>
+      <p data-only="EG" class="note">The general rate in Egypt is fourteen per cent,
+        and the system takes it from the company's country rather than from a
+        constant written into the code.</p>
 
       <div class="ex">
         <div class="ex-h">Return boxes</div>
@@ -311,7 +352,7 @@
       </div>
     </section>
 
-    <section id="zones">
+    <section id="zones" data-only="AE">
       <h2>Designated Zones</h2>
       <p>
         This is the rule people get wrong most often in the UAE, because
@@ -343,7 +384,7 @@
         not after.</p>
     </section>
 
-    <section id="margin">
+    <section id="margin" data-only="AE">
       <h2>The profit margin scheme</h2>
       <p>
         For second-hand goods — cars, equipment, furniture. The tax is on
@@ -377,7 +418,7 @@
         tidy arithmetic and a misdeclaration.</p>
     </section>
 
-    <section id="excise">
+    <section id="excise" data-only="AE">
       <h2>Excise tax</h2>
       <p>
         For tobacco, energy and carbonated and sweetened drinks, and
@@ -836,7 +877,7 @@
         </div>
         <p style="color:#98A1B2;font-size:14px;max-width:34ch">
           
-          E-invoicing and accounting for businesses in the UAE.</p>
+          E-invoicing and accounting for businesses in the UAE and Egypt.</p>
       </div>
       <div>
         <h5>Product</h5>

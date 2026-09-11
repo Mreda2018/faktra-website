@@ -129,28 +129,86 @@
   }
 
   /* ----------------------------------------------------------
-     تبديل الدورة الشهرية والسنوية في صفحة الأسعار
+     البلد والدورة — مبدّلان، ودالة واحدة
+
+     السعر تحدده حالتان: البلد (درهم أو جنيه) والدورة (شهري أو
+     سنوي). لو كتب كل مبدّل السعر بنفسه، صار لدينا موضعان
+     يحسبان الشيء نفسه — ويكفي أن ينسى أحدهما الآخر ليعرض
+     المبدّلان حالتين مختلفتين على شاشة واحدة، فيرى الزائر
+     «جنيه» فوق رقم بالدرهم. لا شيء في الصفحة كان سيشكو.
+
+     فالمبدّلان يغيّران الحالة فقط، و‎apply‎ وحدها تكتب.
      ---------------------------------------------------------- */
+
+  var body = document.body;
+  var PRICED = document.querySelectorAll('[data-price]');
+
+  var apply = function () {
+    var c = body.getAttribute('data-country') || 'AE';
+    var p = body.getAttribute('data-billing') || 'monthly';
+
+    PRICED.forEach(function (el) {
+      // العنصر معلَّم بـ‎data-price‎ والقيم في ‎data-ae-monthly‎
+      // وأخواتها. استعمال العلامة نفسها قيمةً كان يعيد نصًا
+      // فارغًا فيمحو السعر بدل أن يبدّله.
+      var v = el.getAttribute('data-' + c.toLowerCase() + '-' + p);
+      // ‎null‎ تعني أن السمة ناقصة على هذا العنصر. لا نكتب شيئًا:
+      // محو السعر أسوأ من إبقائه قديمًا، و‎verify-site‎ هو ما
+      // يمنع النقص من الوصول إلى النشر أصلًا.
+      if (v !== null) el.textContent = v;
+    });
+
+    document.querySelectorAll('[data-cur]').forEach(function (el) {
+      var v = el.getAttribute('data-' + c.toLowerCase());
+      if (v !== null) el.textContent = v;
+    });
+  };
 
   var cycle = document.querySelector('[data-cycle]');
   if (cycle) {
     cycle.addEventListener('click', function (e) {
       var b = e.target.closest('button[data-period]');
       if (!b) return;
-      var period = b.getAttribute('data-period');
       cycle.querySelectorAll('button').forEach(function (x) {
         x.setAttribute('aria-pressed', String(x === b));
       });
-      // العنصر معلَّم بـ‎data-price‎ والقيمتان في ‎data-monthly‎
-      // و‎data-yearly‎. استعمال إحداهما علامةً وقيمةً في آن واحد
-      // كان يعيد نصًا فارغًا فيمحو السعر بدل أن يبدّله.
-      document.querySelectorAll('[data-price]').forEach(function (el) {
-        var v = el.getAttribute('data-' + period);
-        if (v !== null) el.textContent = v;
-      });
-      document.body.setAttribute('data-billing', period);
+      body.setAttribute('data-billing', b.getAttribute('data-period'));
+      apply();
     });
   }
+
+  /* اختيار البلد يتبع الزائر بين الصفحات. من يختار مصر على صفحة
+     الأسعار ثم يفتح الوثائق فيجدها تتحدث عن الإمارات يستنتج أن
+     الاختيار لم يُسجَّل — أو أسوأ، أن الوثائق إماراتية فقط. */
+  var KEY = 'faktra.country';
+  var stored = null;
+  try { stored = localStorage.getItem(KEY); } catch (err) { /* وضع خاص */ }
+  if (stored === 'AE' || stored === 'EG') body.setAttribute('data-country', stored);
+
+  var ctry = document.querySelector('[data-country-switch]');
+  if (ctry) {
+    var mark = function () {
+      var c = body.getAttribute('data-country') || 'AE';
+      ctry.querySelectorAll('button').forEach(function (x) {
+        x.setAttribute('aria-pressed', String(x.getAttribute('data-country-to') === c));
+      });
+    };
+    mark();
+
+    ctry.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-country-to]');
+      if (!b) return;
+      var to = b.getAttribute('data-country-to');
+      body.setAttribute('data-country', to);
+      try { localStorage.setItem(KEY, to); } catch (err) { /* وضع خاص */ }
+      mark();
+      apply();
+    });
+  }
+
+  // البلد المحفوظ قد يخالف ما هو مكتوب في الصفحة، فتُكتب القيم مرة
+  // عند التحميل لا عند أول ضغطة.
+  apply();
 
   /* ----------------------------------------------------------
      قائمة الوثائق الجانبية: إبراز القسم المعروض
