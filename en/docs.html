@@ -163,7 +163,8 @@
       <a href="#fleet">Fleet &amp; delivery</a>
 
       <h6>People &amp; projects</h6>
-      <a href="#payroll">Payroll &amp; WPS</a>
+      <a href="#payroll" data-only="AE">Payroll &amp; WPS</a>
+      <a href="#payroll" data-only="EG">Payroll</a>
       <a href="#projects">Projects</a>
       <a href="#sales">Leads &amp; commission</a>
       <a href="#compliance">Document expiry</a>
@@ -222,8 +223,9 @@
     <section id="invoicing">
       <h2>Invoicing</h2>
       <p>
-        A UAE-compliant tax invoice, Arabic and English on the same page,
-        with a QR code. Numbering is sequential and cannot gap or repeat.</p>
+        A tax invoice that meets <span data-only="AE">UAE</span><span data-only="EG">Egyptian</span>
+        requirements, Arabic and English on the same page, with a QR code.
+        Numbering is sequential and cannot gap or repeat.</p>
 
       <dl class="kv">
         <dt>Types</dt>
@@ -235,7 +237,8 @@
           Per line or per document, by percentage or amount</dd>
         <dt>Currencies</dt>
         <dd>
-          Any currency; the ledger records dirhams at the invoice-date rate</dd>
+          Any currency; the ledger records the book currency at the
+          invoice-date rate</dd>
       </dl>
 
       <div class="ex">
@@ -244,18 +247,22 @@
         <table>
           <tbody><tr><td>
             Olive oil 500ml × 40 at 37.00</td><td>1,480.00</td></tr>
-          <tr><td>Line discount 5%</td>
-            <td>−74.00</td></tr>
+          <tr><td>Line discount 10%</td>
+            <td>−148.00</td></tr>
           <tr><td>Net before VAT</td>
-            <td>1,406.00</td></tr>
-          <tr><td>VAT 5%</td>
-            <td>70.30</td></tr>
-          <tr class="tot"><td>Total due</td>
-            <td>1,476.30</td></tr>
+            <td>1,332.00</td></tr>
+          <tr data-only="AE"><td>VAT 5%</td>
+            <td>66.60</td></tr>
+          <tr data-only="EG"><td>VAT 14%</td>
+            <td>186.48</td></tr>
+          <tr class="tot" data-only="AE"><td>Total due</td>
+            <td>1,398.60</td></tr>
+          <tr class="tot" data-only="EG"><td>Total due</td>
+            <td>1,518.48</td></tr>
         </tbody></table>
         <p class="note">
           VAT is computed once per group, not per line. The difference is
-          a fils or two — and that is exactly what makes the tax portal accept or
+          a fils or two — and that is exactly what makes the authority accept or
           reject a filing.</p>
       </div>
     </section>
@@ -478,15 +485,15 @@
           Trial balance, income statement, balance sheet</li>
         <li>
           Cash flow statement, and the general ledger for any account</li>
-        <li>
-          Budget versus actual, and corporate tax</li>
+        <li>Budget versus actual</li>
+        <li data-only="AE">Corporate tax</li>
       </ul>
     </section>
 
     <section id="collections">
       <h2>Collections &amp; post-dated cheques</h2>
       <p>
-        Post-dated cheques are central in the UAE market and most systems
+        Post-dated cheques are central in both markets and most systems
         get them wrong: either treating them as cash received, or ignoring them until
         they clear.</p>
 
@@ -689,10 +696,14 @@
     </section>
 
     <section id="payroll">
-      <h2>Payroll &amp; WPS</h2>
-      <p>
+      <h2><span data-only="AE">Payroll &amp; WPS</span><span data-only="EG">Payroll</span></h2>
+      <p data-only="AE">
         A monthly payroll run, the <span class="en">WPS</span> file in the
         format the bank accepts, and end-of-service gratuity computed to UAE law.</p>
+      <p data-only="EG">
+        A monthly payroll run with its allowances and deductions, overtime,
+        leave and balances, and end-of-service entitlements — posted to the
+        ledger as one entry that matches what the staff were paid.</p>
 
       <div class="ex">
         <div class="ex-h">
@@ -712,13 +723,14 @@
             <td>11,672.92</td></tr>
         </tbody></table>
         <p class="note">
-          That exact figure is what goes into the WPS file and what is
-          posted to the books — not three separate calculations that can disagree.</p>
+          That exact figure is what is paid<span data-only="AE">, what goes into
+          the WPS file,</span> and what is posted to the books — not three
+          separate calculations that can disagree.</p>
       </div>
 
       <p>
         Alongside it: leave and balances, attendance and overtime, and
-        expiry tracking for visas, residence permits and labour cards.</p>
+        expiry tracking for documents and licences.</p>
     </section>
 
     <section id="projects">
